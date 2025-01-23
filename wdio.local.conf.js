@@ -1,14 +1,9 @@
 import allure from 'allure-commandline'
+import { browser } from '@wdio/globals'
 
 const debug = process.env.DEBUG
 const oneMinute = 60 * 1000
 const oneHour = 60 * 60 * 1000
-
-const execArgv = ['--loader', 'esm-module-alias/loader']
-
-if (debug) {
-  execArgv.push('--inspect')
-}
 
 export const config = {
   //
@@ -55,7 +50,7 @@ export const config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 1,
+  maxInstances: debug ? 1 : 3,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -79,7 +74,7 @@ export const config = {
         }
       ],
 
-  execArgv,
+  execArgv: debug ? ['--inspect'] : [],
 
   //
   // ===================
@@ -112,7 +107,7 @@ export const config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: 'http://localhost:3555',
+  baseUrl: 'http://localhost:3009',
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -166,7 +161,8 @@ export const config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: debug ? oneHour : 60000
+    timeout: debug ? oneHour : 60000,
+    bail: true
   },
   //
   // =====
