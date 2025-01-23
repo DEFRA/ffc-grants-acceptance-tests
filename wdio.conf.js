@@ -29,12 +29,6 @@ export const config = {
   capabilities: [
     {
       browserName: 'chrome',
-      // Outbound calls must go via the proxy
-      proxy: {
-        proxyType: 'manual',
-        httpProxy: 'localhost:3128',
-        sslProxy: 'localhost:3128'
-      },
       'goog:chromeOptions': {
         args: [
           '--no-sandbox',
