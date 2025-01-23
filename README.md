@@ -1,4 +1,4 @@
-# CDP Node.js Environment Test Suite Template
+ffc-grants-acceptance-tests
 
 The template to create a service that runs WDIO tests against an environment.
 
