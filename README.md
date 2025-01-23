@@ -1,17 +1,6 @@
-ffc-grants-acceptance-tests
+# ffc-grants-acceptance-tests
 
-The template to create a service that runs WDIO tests against an environment.
-
-- [Local](#local)
-  - [Requirements](#requirements)
-    - [Node.js](#nodejs)
-  - [Setup](#setup)
-  - [Running local tests](#running-local-tests)
-  - [Debugging local tests](#debugging-local-tests)
-- [Production](#production)
-  - [Debugging tests](#debugging-tests)
-- [Licence](#licence)
-  - [About the licence](#about-the-licence)
+This repository contains the acceptance tests for the integrated journey between multiple deployed services that delivers a Grant Application journey.
 
 ## Local Development
 
