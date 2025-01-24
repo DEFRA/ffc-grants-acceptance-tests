@@ -16,3 +16,7 @@ When(/^the user selects "([^"]*)?"$/, async (text) => {
 When(/^(?:the user continues|continues)$/, async () => {
   await $(`//button[contains(text(),'Continue')]`).click()
 })
+
+When(/^(?:the user submits|submits) their form$/, async () => {
+  await $(`//button[contains(text(),'Send')]`).click()
+})

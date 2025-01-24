@@ -1,5 +1,7 @@
 import { Then } from '@wdio/cucumber-framework'
-import poller from './poller.js'
+import poller from './poller'
+import SummaryQuestion from '../dto/SummaryQuestion'
+import SummaryPage from '../pages/SummaryPage'
 
 Then(/^(?:the user should|should) see heading "([^"]*)?"$/, async (text) => {
   if (text.indexOf("'") > -1) {
@@ -18,5 +20,17 @@ Then(
       }
     )
     await expect(doesActualUrlEndWithExpectedPath).toBe(true)
+  }
+)
+
+Then(
+  /^(?:the user should|should) see the following answers$/,
+  async (dataTable) => {
+    const expectedAnswers = []
+    for (const row of dataTable.hashes()) {
+      expectedAnswers.push(new SummaryQuestion(row.QUESTION, row.ANSWER))
+    }
+    const actualAnswers = await SummaryPage.getAnswers()
+    await expect(actualAnswers).toEqual(expectedAnswers)
   }
 )
