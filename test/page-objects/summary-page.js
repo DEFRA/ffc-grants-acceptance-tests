@@ -10,9 +10,14 @@ class SummaryAnswer {
 class SummaryPage {
   async getAnswers() {
     const rowElements = await this.#getRowElements()
+    console.log("RETRIEVED "+rowElements.length+" ELEMENTS")
     return await Promise.all(
       await rowElements.map(async (e) => {
-        return new SummaryAnswer(await this.#getQuestion(e), await this.#getAnswer(e))
+        console.log("RETRIEVING CHILD ELEMENTS FOR ELEMENT: "+ e.elementId)
+        const question = await this.#getQuestion(e)
+        const answer = await this.#getAnswer(e)
+        console.log("FOUND VALUES FOR ELEMENT: " + e.elementId + ", QUESTION: " + question + ", ANSWER: " + answer)
+        return new SummaryAnswer(question, answer)
       })
     )
   }
