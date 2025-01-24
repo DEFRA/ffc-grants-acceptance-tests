@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import { browser } from '@wdio/globals'
 
 const debug = process.env.DEBUG
@@ -304,7 +305,12 @@ export const config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  onComplete: function (exitCode, config, capabilities, results) {}
+  onComplete: function (exitCode, config, capabilities, results) {
+    // !Do Not Remove! Required for test status to show correctly in portal.
+    if (results?.failed && results.failed > 0) {
+      fs.writeFileSync('FAILED', JSON.stringify(results))
+    }
+  }
   /**
    * Gets executed when a refresh happens.
    * @param {string} oldSessionId session ID of the old session
