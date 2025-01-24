@@ -9,17 +9,16 @@ class SummaryAnswer {
 
 class SummaryPage {
   async getAnswers() {
+    const answers = []
     const rowElements = await this.#getRowElements()
-    console.log("RETRIEVED "+rowElements.length+" ELEMENTS")
-    return await Promise.all(
-      await rowElements.map(async (e) => {
-        console.log("RETRIEVING CHILD ELEMENTS FOR ELEMENT: "+ e.elementId)
-        const question = await this.#getQuestion(e)
-        const answer = await this.#getAnswer(e)
-        console.log("FOUND VALUES FOR ELEMENT: " + e.elementId + ", QUESTION: " + question + ", ANSWER: " + answer)
-        return new SummaryAnswer(question, answer)
-      })
-    )
+
+    for (const e of rowElements) {
+      const question = await this.#getQuestion(e)
+      const answer = await this.#getAnswer(e)
+      answers.push(new SummaryAnswer(question, answer))
+    }
+
+    return answers
   }
 
   async #getRowElements() {
