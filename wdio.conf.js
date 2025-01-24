@@ -371,12 +371,7 @@ export const config = {
    * @param {number}             result.duration  duration of scenario in milliseconds
    * @param {object}             context          Cucumber World object
    */
-  afterStep: async function (
-    step,
-    scenario,
-    { error, duration, passed },
-    context
-  ) {
+  afterStep: async function (step, scenario, { error, duration, passed }, context) {
     await browser.takeScreenshot()
   },
   /**

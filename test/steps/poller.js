@@ -6,9 +6,7 @@ export default class poller {
       if (await predicate()) {
         return true
       }
-      await new Promise((resolve) =>
-        setTimeout(resolve, this.pollingIntervalSeconds * 1000)
-      )
+      await new Promise((resolve) => setTimeout(resolve, this.pollingIntervalSeconds * 1000))
     }
 
     return false

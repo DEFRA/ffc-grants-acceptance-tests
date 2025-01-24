@@ -5,9 +5,7 @@ When(/^(?:the user clicks|clicks) on "([^"]*)?"$/, async (text) => {
 })
 
 When(/^the user selects "([^"]*)?"$/, async (text) => {
-  const element = await $(
-    `//label[contains(text(),'${text}')]/preceding-sibling::input`
-  )
+  const element = await $(`//label[contains(text(),'${text}')]/preceding-sibling::input`)
   if (!(await element.isSelected())) {
     await element.click()
   }

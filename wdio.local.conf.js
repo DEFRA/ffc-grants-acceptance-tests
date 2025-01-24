@@ -70,12 +70,7 @@ export const config = {
           maxInstances: 1,
           browserName: 'chrome',
           'goog:chromeOptions': {
-            args: [
-              '--no-sandbox',
-              '--disable-infobars',
-              '--disable-gpu',
-              '--window-size=1920,1080'
-            ]
+            args: ['--no-sandbox', '--disable-infobars', '--disable-gpu', '--window-size=1920,1080']
           }
         }
       ],
@@ -281,17 +276,11 @@ export const config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function (
-    test,
-    context,
-    { error, result, duration, passed, retries }
-  ) {
+  afterTest: async function (test, context, { error, result, duration, passed, retries }) {
     await browser.takeScreenshot()
 
     if (error) {
-      browser.executeScript(
-        'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "At least 1 assertion failed"}}'
-      )
+      browser.executeScript('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "At least 1 assertion failed"}}')
     }
   },
 

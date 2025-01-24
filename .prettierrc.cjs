@@ -6,6 +6,7 @@ module.exports = {
   semi: false,
   singleQuote: true,
   trailingComma: 'none',
+  printWidth: 300,
   overrides: [
     {
       files: '*.md',
@@ -17,7 +18,7 @@ module.exports = {
     {
       files: '*.scss',
       options: {
-        printWidth: 120,
+        printWidth: 150,
         singleQuote: false
       }
     }
