@@ -28,7 +28,7 @@ export const config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['./test/specs/**/*.js'],
+  specs: ['./test/features/**/*.feature'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -132,7 +132,7 @@ export const config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: 'mocha',
+  framework: 'cucumber',
   //
   // The number of times to retry the entire specfile when it fails as a whole
   // specFileRetries: 1,
@@ -156,6 +156,34 @@ export const config = {
       }
     ]
   ],
+
+  // If you are using Cucumber you need to specify the location of your step definitions.
+  cucumberOpts: {
+    // <string[]> (file/dir) require files before executing features
+    require: ['./test/steps/*.js'],
+    // <boolean> show full backtrace for errors
+    backtrace: false,
+    // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+    requireModule: [],
+    // <boolean> invoke formatters without executing steps
+    dryRun: false,
+    // <boolean> abort the run on first failure
+    failFast: false,
+    // <string[]> Only execute the scenarios with name matching the expression (repeatable).
+    name: [],
+    // <boolean> hide step definition snippets for pending steps
+    snippets: true,
+    // <boolean> hide source uris
+    source: true,
+    // <boolean> fail if there are any undefined or pending steps
+    strict: false,
+    // <string> (expression) only execute the features or scenarios with tags matching the expression
+    tagExpression: '',
+    // <number> timeout for step definitions
+    timeout: 60000,
+    // <boolean> Enable this config to treat undefined definitions as warnings.
+    ignoreUndefinedDefinitions: false
+  },
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
@@ -320,7 +348,7 @@ export const config = {
         resolve()
       })
     })
-  }
+  },
 
   /**
    * Gets executed when a refresh happens.
@@ -328,4 +356,65 @@ export const config = {
    * @param {string} newSessionId session ID of the new session
    */
   // onReload: function (oldSessionId, newSessionId) {}
+
+  /**
+   * Cucumber Hooks
+   *
+   * Runs before a Cucumber Feature.
+   * @param {string}                   uri      path to feature file
+   * @param {GherkinDocument.IFeature} feature  Cucumber feature object
+   */
+  // beforeFeature: function (uri, feature) {
+  // },
+  /**
+   *
+   * Runs before a Cucumber Scenario.
+   * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
+   * @param {object}                 context  Cucumber World object
+   */
+  // beforeScenario: function (world, context) {
+  // },
+  /**
+   *
+   * Runs before a Cucumber Step.
+   * @param {Pickle.IPickleStep} step     step data
+   * @param {IPickle}            scenario scenario pickle
+   * @param {object}             context  Cucumber World object
+   */
+  // beforeStep: function (step, scenario, context) {
+  // },
+  /**
+   *
+   * Runs after a Cucumber Step.
+   * @param {Pickle.IPickleStep} step             step data
+   * @param {IPickle}            scenario         scenario pickle
+   * @param {object}             result           results object containing scenario results
+   * @param {boolean}            result.passed    true if scenario has passed
+   * @param {string}             result.error     error stack if scenario failed
+   * @param {number}             result.duration  duration of scenario in milliseconds
+   * @param {object}             context          Cucumber World object
+   */
+  // afterStep: function (step, scenario, result, context) {
+  // },
+  /**
+   *
+   * Runs after a Cucumber Scenario.
+   * @param {ITestCaseHookParameter} world            world object containing information on pickle and test step
+   * @param {object}                 result           results object containing scenario results
+   * @param {boolean}                result.passed    true if scenario has passed
+   * @param {string}                 result.error     error stack if scenario failed
+   * @param {number}                 result.duration  duration of scenario in milliseconds
+   * @param {object}                 context          Cucumber World object
+   */
+  afterScenario: async function (world, result, context) {
+    await browser.reloadSession()
+  }
+  /**
+   *
+   * Runs after a Cucumber Feature.
+   * @param {string}                   uri      path to feature file
+   * @param {GherkinDocument.IFeature} feature  Cucumber feature object
+   */
+  // afterFeature: function (uri, feature) {
+  // }
 }
