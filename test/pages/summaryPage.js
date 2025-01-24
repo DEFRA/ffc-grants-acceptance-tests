@@ -1,7 +1,7 @@
 import { $$ } from '@wdio/globals'
-import SummaryQuestion from '../dto/SummaryQuestion'
+import { SummaryQuestion } from '../dto/SummaryQuestion'
 
-class SummaryPage {
+export class SummaryPage {
   async getAnswers() {
     const rowElements = await this.#getRowElements()
     return await Promise.all(
@@ -28,5 +28,3 @@ class SummaryPage {
     return text.trim()
   }
 }
-
-export default new SummaryPage()
