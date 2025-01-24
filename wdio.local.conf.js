@@ -13,6 +13,12 @@ export const config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
   //
+  // Set a base URL in order to shorten url command calls. If your `url` parameter starts
+  // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
+  // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
+  // gets prepended directly.
+  baseUrl: `https://forms-runner-v2.dev.cdp-int.defra.cloud`,
+  //
   // ==================
   // Specify Test Files
   // ==================
@@ -103,12 +109,6 @@ export const config = {
   // bail (default is 0 - don't bail, run all tests).
   bail: 1,
   //
-  // Set a base URL in order to shorten url command calls. If your `url` parameter starts
-  // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
-  // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
-  // gets prepended directly.
-  baseUrl: `https://forms-runner-v2.dev.cdp-int.defra.cloud`,
-  //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
   waitforInterval: 200,
@@ -152,7 +152,8 @@ export const config = {
     [
       'allure',
       {
-        outputDir: 'allure-results'
+        outputDir: 'allure-results',
+        useCucumberStepReporter: true
       }
     ]
   ],
