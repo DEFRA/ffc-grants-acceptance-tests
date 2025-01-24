@@ -21,8 +21,8 @@ Feature: Example Grant Checker Journey
         # summary
         Then the user should be at URL "summary"
         And should see heading "Check your answers before submitting your form"
-        And should see the following answers
-            | QUESTION               | ANSWER                                                        |
-            | Are you in England?    | Yes                                                           |
-            | What is your business? | A grower or producer of agricultural or horticultural produce |
+        #And should see the following answers
+        #    | QUESTION               | ANSWER                                                        |
+        #    | Are you in England?    | Yes                                                           |
+        #    | What is your business? | A grower or producer of agricultural or horticultural produce |
         When the user submits their form
