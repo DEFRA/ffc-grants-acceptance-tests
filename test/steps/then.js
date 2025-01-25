@@ -1,6 +1,7 @@
 import { Then } from '@wdio/cucumber-framework'
 import poller from './poller'
-import { SummaryAnswer, SummaryPage } from '../page-objects/summary-page'
+import SummaryAnswer from '../dto/summary-answer'
+import SummaryPage from '../page-objects/summary.page'
 
 Then(/^(?:the user should|should) see heading "([^"]*)?"$/, async (text) => {
   if (text.indexOf("'") > -1) {
@@ -22,7 +23,7 @@ Then(/^(?:the user should|should) see the following answers$/, async (dataTable)
   for (const row of dataTable.hashes()) {
     expectedAnswers.push(new SummaryAnswer(row.QUESTION, row.ANSWER))
   }
-  const actualAnswers = await new SummaryPage().answers()
+  const actualAnswers = await SummaryPage.answers()
   console.log('EXPECTED: ' + JSON.stringify(expectedAnswers))
   console.log('ACTUAL: ' + JSON.stringify(actualAnswers))
   await expect(actualAnswers).toEqual(expectedAnswers)
