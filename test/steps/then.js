@@ -22,7 +22,7 @@ Then(/^(?:the user should|should) see the following answers$/, async (dataTable)
   for (const row of dataTable.hashes()) {
     expectedAnswers.push(new SummaryAnswer(row.QUESTION, row.ANSWER))
   }
-  const actualAnswers = await new SummaryPage().getAnswers()
+  const actualAnswers = await new SummaryPage().answers()
   console.log('EXPECTED: ' + JSON.stringify(expectedAnswers))
   console.log('ACTUAL: ' + JSON.stringify(actualAnswers))
   await expect(actualAnswers).toEqual(expectedAnswers)

@@ -1,8 +1,7 @@
 import fs from 'node:fs'
 import { browser } from '@wdio/globals'
 
-const debug = process.env.DEBUG
-const oneHour = 60 * 60 * 1000
+const oneMinute = 60 * 1000
 
 export const config = {
   //
@@ -61,7 +60,7 @@ export const config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: debug ? 1 : 10,
+  maxInstances: 1,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -70,11 +69,34 @@ export const config = {
 
   capabilities: [
     {
-      browserName: 'chrome'
+      browserName: 'chrome',
+      // Outbound calls must go via the proxy
+      proxy: {
+        proxyType: 'manual',
+        httpProxy: 'localhost:3128',
+        sslProxy: 'localhost:3128'
+      },
+      'goog:chromeOptions': {
+        args: [
+          '--no-sandbox',
+          '--disable-infobars',
+          '--headless',
+          '--disable-gpu',
+          '--window-size=1920,1080',
+          '--enable-features=NetworkService,NetworkServiceInProcess',
+          '--password-store=basic',
+          '--use-mock-keychain',
+          '--dns-prefetch-disable',
+          '--disable-background-networking',
+          '--disable-remote-fonts',
+          '--ignore-certificate-errors',
+          '--disable-dev-shm-usage'
+        ]
+      }
     }
   ],
 
-  execArgv: debug ? ['--inspect'] : [],
+  execArgv: ['--loader', 'esm-module-alias/loader'],
 
   //
   // ===================
@@ -83,7 +105,7 @@ export const config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: debug ? 'debug' : 'info',
+  logLevel: 'info',
   //
   // Set specific log levels per logger
   // loggers:
@@ -193,7 +215,7 @@ export const config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: debug ? oneHour : 60000,
+    timeout: oneMinute,
     bail: true
   },
   //

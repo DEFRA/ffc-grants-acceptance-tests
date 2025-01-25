@@ -8,31 +8,28 @@ class SummaryAnswer {
 }
 
 class SummaryPage {
-  async getAnswers() {
+  async answers() {
     const answers = []
-    const rowElements = await this.#getRowElements()
 
-    for (const e of rowElements) {
-      const question = await this.#getQuestion(e)
-      const answer = await this.#getAnswer(e)
+    for (const rowElement of await this.#rowElements()) {
+      const question = await this.#question(rowElement)
+      const answer = await this.#answer(rowElement)
       answers.push(new SummaryAnswer(question, answer))
     }
 
     return answers
   }
 
-  async #getRowElements() {
+  async #rowElements() {
     return $$('//h1/following-sibling::dl/div')
   }
 
-  async #getQuestion(parentElement) {
-    const text = await parentElement.$('dt').getText()
-    return text.trim()
+  async #question(parentElement) {
+    return (await parentElement.$('dt').getText()).trim()
   }
 
-  async #getAnswer(parentElement) {
-    const text = await parentElement.$$('dd')[0].getText()
-    return text.trim()
+  async #answer(parentElement) {
+    return (await parentElement.$$('dd')[0].getText()).trim()
   }
 }
 
