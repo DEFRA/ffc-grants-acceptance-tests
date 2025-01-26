@@ -28,3 +28,7 @@ Then(/^(?:the user should|should) see the following answers$/, async (dataTable)
   console.log('ACTUAL: ' + JSON.stringify(actualAnswers))
   await expect(actualAnswers).toEqual(expectedAnswers)
 })
+
+Then(/^(?:the user should|should) see error "([^"]*)?"$/, async (text) => {
+  await expect($(`//div[@class="govuk-error-summary"]//a[contains(text(),'${text}')]`)).toBeDisplayed();
+});

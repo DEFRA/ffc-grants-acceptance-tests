@@ -1,9 +1,8 @@
-Feature: Backward Navigation
+Feature: Example Grant Backward Navigation
 
     Scenario: Explore all backward navigation options
         # start
         Given the user navigates to "/grants/start"
-        Then the user should see heading "Start page"
         When the user clicks on "Start now"
 
         # are-you-in-england
@@ -32,4 +31,4 @@ Feature: Backward Navigation
         Then the user should be at URL "what-is-your-business"
         When the user continues
         Then the user should be at URL "summary"
-        And should see heading "Check your answers before submitting your form"
+

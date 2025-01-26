@@ -1,4 +1,4 @@
-Feature: Example Grant Checker Journey
+Feature: Example Grant Journey
 
     Scenario: Apply for an example grant
         # start
