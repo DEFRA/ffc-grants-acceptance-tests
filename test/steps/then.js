@@ -30,5 +30,5 @@ Then(/^(?:the user should|should) see the following answers$/, async (dataTable)
 })
 
 Then(/^(?:the user should|should) see error "([^"]*)?"$/, async (text) => {
-  await expect($(`//div[@class="govuk-error-summary"]//a[contains(text(),'${text}')]`)).toBeDisplayed();
-});
+  await expect($(`//div[@class="govuk-error-summary"]//a[contains(text(),'${text}')]`)).toBeDisplayed()
+})
