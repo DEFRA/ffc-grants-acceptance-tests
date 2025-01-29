@@ -26,3 +26,6 @@ Feature: Example Grant Journey
             | Are you in England?    | Yes                                                           |
             | What is your business? | A grower or producer of agricultural or horticultural produce |
         When the user submits their form
+
+        # status
+        And should see heading "Form submitted"
