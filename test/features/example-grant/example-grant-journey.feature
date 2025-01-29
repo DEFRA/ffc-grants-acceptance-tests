@@ -28,4 +28,5 @@ Feature: Example Grant Journey
         When the user submits their form
 
         # status
+        Then the user should be at URL "status"
         And should see heading "Form submitted"
