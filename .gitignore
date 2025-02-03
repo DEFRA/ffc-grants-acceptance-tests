@@ -12,3 +12,4 @@ coverage
 /allure-results
 .env
 FAILED
+/tmp

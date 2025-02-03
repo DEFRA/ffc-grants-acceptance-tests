@@ -16,6 +16,8 @@ Then(/^(?:the user should|should) be at URL "([^"]*)?"$/, async (expectedPath) =
     return await actualUrl.endsWith(expectedPath)
   })
   await expect(doesActualUrlEndWithExpectedPath).toBe(true)
+  // check a full page screenshot with a mismatch percentage of 5% from the baseline
+  await expect(browser).toMatchFullPageSnapshot(expectedPath, 5)
 })
 
 Then(/^(?:the user should|should) see the following answers$/, async (dataTable) => {
