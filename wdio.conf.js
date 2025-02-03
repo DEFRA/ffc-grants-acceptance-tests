@@ -1,5 +1,4 @@
 import fs from 'node:fs'
-import path from 'node:path'
 import { browser } from '@wdio/globals'
 
 const debug = process.env.DEBUG
@@ -136,17 +135,7 @@ export const config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: [
-    [
-      'visual',
-      {
-        baselineFolder: path.join(process.cwd(), 'test', 'snapshots'),
-        formatImageName: '{tag}',
-        screenshotPath: path.join(process.cwd(), 'tmp'),
-        savePerInstance: true
-      }
-    ]
-  ],
+  // services: [],
   //
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -184,7 +173,7 @@ export const config = {
       'allure',
       {
         outputDir: 'allure-results',
-        useCucumberStepReporter: false
+        useCucumberStepReporter: true
       }
     ]
   ],
