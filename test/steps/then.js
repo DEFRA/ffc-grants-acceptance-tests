@@ -1,5 +1,7 @@
 import { Then } from '@wdio/cucumber-framework'
 import poller from './poller'
+import ScoreResult from '../dto/score-result'
+import ScoreResultsPage from '../page-objects/score-results.page'
 import SummaryAnswer from '../dto/summary-answer'
 import SummaryPage from '../page-objects/summary.page'
 
@@ -31,4 +33,37 @@ Then(/^(?:the user should|should) see the following answers$/, async (dataTable)
 
 Then(/^(?:the user should|should) see error "([^"]*)?"$/, async (text) => {
   await expect($(`//div[@class="govuk-error-summary"]//a[contains(text(),'${text}')]`)).toBeDisplayed()
+})
+
+Then(/^(?:the user should|should) see "([^"]*)?" for their project score$/, async (expectedScore) => {
+  const actualScore = await ScoreResultsPage.score()
+  await expect(actualScore).toEqual(expectedScore)
+})
+
+Then(/^(?:the user should|should) see the following score results$/, async (dataTable) => {
+  const expectedScoreResults = []
+  let scoreResult = {}
+
+  for (const row of dataTable.hashes()) {
+    let topic = row['TOPIC']
+    let answer = row['ANSWERS']
+    let score = row['SCORE']
+    let fundingPriority = row['FUNDING PRIORITIES']
+
+    if (topic) {
+      scoreResult = new ScoreResult(topic, [], score, [])
+      expectedScoreResults.push(scoreResult)
+    }
+
+    if (answer) {
+      scoreResult.answers.push(answer)
+    }
+
+    if (fundingPriority) {
+      scoreResult.fundingPriorities.push(fundingPriority)
+    }
+  }
+
+  const actualScoreResults = await ScoreResultsPage.results()
+  await expect(actualScoreResults).toEqual(expectedScoreResults)
 })

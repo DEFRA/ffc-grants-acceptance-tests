@@ -1,5 +1,5 @@
 Feature: Adding Value Journey
-    @adding-value
+
     Scenario: Apply for an Adding Value grant
         # start
         Given the user navigates to "/adding-value/start"
@@ -59,3 +59,18 @@ Feature: Adding Value Journey
         # score-results
         Then the user should be at URL "score-results"
         And should see heading "Score results"
+        And should see "Strong" for their project score
+        And should see the following score results
+            | TOPIC                | ANSWERS                                  | SCORE   | FUNDING PRIORITIES                                                                            |
+            | Produce processed    | Arable produce                           | Strong  | Create and expand processing capacity to provide more English-grown food for consumers to buy |
+            | Adding value         | Introducing a new product to your farm   | Average | Improve processing and supply chains                                                          |
+            |                      |                                          |         | Grow your business                                                                            |
+            | Project impact       | Increasing range of added-value products | Average | Improve processing and supply chains                                                          |
+            |                      |                                          |         | Grow your business                                                                            |
+            | Future customers     | Processors                               | Weak    | Improve processing and supply chains                                                          |
+            |                      |                                          |         | Grow your business                                                                            |
+            | Collaboration        | Yes                                      | Strong  | Improve processing and supply chains                                                          |
+            |                      |                                          |         | Encourage collaboration and partnerships                                                      |
+            | Environmental Impact | Renewable energy                         | Strong  | Improve the environment                                                                       |
+            |                      | Energy efficiency                        |         |                                                                                               |
+            |                      | Water efficiency                         |         |                                                                                               |
