@@ -45,10 +45,10 @@ Then(/^(?:the user should|should) see the following score results$/, async (data
   let scoreResult = {}
 
   for (const row of dataTable.hashes()) {
-    let topic = row['TOPIC']
-    let answer = row['ANSWERS']
-    let score = row['SCORE']
-    let fundingPriority = row['FUNDING PRIORITIES']
+    const topic = row.TOPIC
+    const answer = row.ANSWERS
+    const score = row.SCORE
+    const fundingPriority = row['FUNDING PRIORITIES']
 
     if (topic) {
       scoreResult = new ScoreResult(topic, [], score, [])
