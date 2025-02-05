@@ -2,7 +2,7 @@ Feature: Example Grant Elimination
 
     Scenario: Explore all elimination routes
         # start
-        Given the user navigates to "/grants/start"
+        Given the user navigates to "/example-grant/start"
         Then the user should see heading "Start page"
         When the user clicks on "Start now"
 
