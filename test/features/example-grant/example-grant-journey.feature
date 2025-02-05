@@ -1,6 +1,6 @@
 Feature: Example Grant Journey
 
-    Scenario: Apply for an example grant
+    Scenario: Apply for a grant
         # start
         Given the user navigates to "/example-grant/start"
         Then the user should be at URL "start"

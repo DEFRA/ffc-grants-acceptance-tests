@@ -1,6 +1,6 @@
 Feature: Adding Value Journey
 
-    Scenario: Apply for an Adding Value grant
+    Scenario: Apply for a grant
         # start
         Given the user navigates to "/adding-value/start"
         Then the user should be at URL "start"
@@ -34,27 +34,27 @@ Feature: Adding Value Journey
         # adding-value
         Then the user should be at URL "adding-value"
         And should see heading "How will your project add value to the produce?"
-        And continues
+        When the user continues
 
         # project-impact
         Then the user should be at URL "project-impact"
         And should see heading "What impact will the project have?"
-        And continues
+        When the user continues
 
         # future-customers
         Then the user should be at URL "future-customers"
         And should see heading "Who will your new customers be after the project?"
-        And continues
+        When the user continues
 
         # collaboration
         Then the user should be at URL "collaboration"
         And should see heading "Will you work in partnership or collaborate with other farmers or producers?"
-        And continues
+        When the user continues
 
         # environmental-impact
         Then the user should be at URL "environmental-impact"
         And should see heading "How will the project improve the environment?"
-        And continues
+        When the user continues
 
         # score-results
         Then the user should be at URL "score-results"
