@@ -71,12 +71,12 @@ Feature: Adding Value Scoring
             |                      |                                          |         | Grow your business                                                                            |
             | Collaboration        | Yes                                      | Strong  | Improve processing and supply chains                                                          |
             |                      |                                          |         | Encourage collaboration and partnerships                                                      |
-            | Environmental Impact | Renewable energy                         | Strong  | Improve the environment                                                                       |
+            | Environmental impact | Renewable energy                         | Strong  | Improve the environment                                                                       |
             |                      | Energy efficiency                        |         |                                                                                               |
             |                      | Water efficiency                         |         |                                                                                               |
 
         # change scoring question
-        When the user chooses to change their "Environmental Impact" answer
+        When the user chooses to change their "Environmental impact" answer
 
         # environmental-impact
         Then the user should be at URL "environmental-impact"

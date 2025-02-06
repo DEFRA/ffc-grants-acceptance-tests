@@ -71,6 +71,6 @@ Feature: Adding Value Journey
             |                      |                                          |         | Grow your business                                                                            |
             | Collaboration        | Yes                                      | Strong  | Improve processing and supply chains                                                          |
             |                      |                                          |         | Encourage collaboration and partnerships                                                      |
-            | Environmental Impact | Renewable energy                         | Strong  | Improve the environment                                                                       |
+            | Environmental impact | Renewable energy                         | Strong  | Improve the environment                                                                       |
             |                      | Energy efficiency                        |         |                                                                                               |
             |                      | Water efficiency                         |         |                                                                                               |
