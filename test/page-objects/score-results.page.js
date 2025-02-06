@@ -2,6 +2,10 @@ import { $ } from '@wdio/globals'
 import ScoreResult from '../dto/score-result'
 
 class ScoreResultsPage {
+  async changeAnswerFor(topic) {
+    await $(`//h2/following-sibling::table/tbody/tr/td/strong[contains(text(),'${topic}')]/../following-sibling::td[3]/a`).click()
+  }
+
   async score() {
     return (await $('//h1/following-sibling::div/p').getText()).trim()
   }

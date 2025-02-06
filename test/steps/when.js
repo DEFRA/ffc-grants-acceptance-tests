@@ -1,4 +1,5 @@
 import { When } from '@wdio/cucumber-framework'
+import ScoreResultsPage from '../page-objects/score-results.page'
 
 When(/^(?:the user clicks|clicks) on "([^"]*)?"$/, async (text) => {
   await $(`//*[contains(text(),'${text}')]`).click()
@@ -21,4 +22,8 @@ When(/^(?:the user submits|submits) their form$/, async () => {
 
 When(/^(?:the user navigates|navigates) backward$/, async () => {
   await $("//a[@class='govuk-back-link']").click()
+})
+
+When(/^(?:the user chooses|chooses) to change their "([^"]*)?" answer$/, async (topic) => {
+  await ScoreResultsPage.changeAnswerFor(topic)
 })
