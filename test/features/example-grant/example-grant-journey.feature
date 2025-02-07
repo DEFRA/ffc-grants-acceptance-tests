@@ -4,7 +4,7 @@ Feature: Example Grant Journey
         # start
         Given the user navigates to "/example-grant/start"
         Then the user should be at URL "start"
-        Then the user should see heading "Start page"
+        And should see heading "Start page"
         When the user clicks on "Start now"
 
         # are-you-in-england
