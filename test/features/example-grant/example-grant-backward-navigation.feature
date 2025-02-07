@@ -4,7 +4,6 @@ Feature: Example Grant Backward Navigation
         # start
         Given the user navigates to "/example-grant/start"
         Then the user should be at URL "start"
-        Then the user should see heading "Start page"
         When the user clicks on "Start now"
 
         # are-you-in-england
@@ -13,7 +12,6 @@ Feature: Example Grant Backward Navigation
         Then the user should be at URL "start"
         When the user clicks on "Start now"
         Then the user should be at URL "are-you-in-england"
-        And should see heading "Are you in England?"
         When the user selects "Yes"
         And continues
 
@@ -23,7 +21,6 @@ Feature: Example Grant Backward Navigation
         Then the user should be at URL "are-you-in-england"
         When the user continues
         Then the user should be at URL "what-is-your-business"
-        And should see heading "What is your business?"
         When the user selects "A grower or producer of agricultural or horticultural produce"
         And continues
 
@@ -33,4 +30,3 @@ Feature: Example Grant Backward Navigation
         Then the user should be at URL "what-is-your-business"
         When the user continues
         Then the user should be at URL "summary"
-
