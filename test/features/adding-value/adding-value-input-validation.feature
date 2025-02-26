@@ -31,3 +31,17 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "products-processed"
         When the user continues
         Then the user should see error "Select what type of produce is being processed?"
+        When the user selects "Arable produce"
+        And continues
+
+        # adding-value
+        Then the user should be at URL "adding-value"
+        When the user continues
+        Then the user should see error "Select how will your project add value to the produce?"
+        When the user selects "Introducing a new product to your farm"
+        And continues
+
+        # project-impact
+        Then the user should be at URL "project-impact"
+        When the user continues
+        Then the user should see error "Select what impact will the project have?"

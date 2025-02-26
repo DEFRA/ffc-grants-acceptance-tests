@@ -51,6 +51,7 @@ Feature: Adding Value Backward Navigation
         When the user selects "Arable produce"
         And continues
         Then the user should be at URL "adding-value"
+        When the user selects "Introducing a new product to your farm"
         When the user continues
 
         # project-impact
@@ -59,6 +60,8 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "adding-value"
         When the user continues
         Then the user should be at URL "project-impact"
+        When the user selects the following
+            | Increasing range of added-value products  |
         When the user continues
 
         # future-customers

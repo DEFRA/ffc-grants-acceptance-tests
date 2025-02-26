@@ -1,5 +1,5 @@
 Feature: Adding Value Scoring
-@wip
+
     Scenario: User changes their answer to a scoring question
         # start
         Given the user navigates to "/adding-value/start"
@@ -23,17 +23,23 @@ Feature: Adding Value Scoring
 
         # products-processed
         Then the user should be at URL "products-processed"
+        And should see heading "What type of produce is being processed?"
         When the user selects "Arable produce"
         And continues
 
         # adding-value
         Then the user should be at URL "adding-value"
-        When the user continues
+        And should see heading "How will your project add value to the produce?"
+        When the user selects "Introducing a new product to your farm"
+        And continues
 
         # project-impact
         Then the user should be at URL "project-impact"
         And should see heading "What impact will the project have?"
-        When the user continues
+        When the user selects the following
+            | Increasing range of added-value products  |
+            | Increasing volume of added-value products |
+        And continues
 
         # future-customers
         Then the user should be at URL "future-customers"

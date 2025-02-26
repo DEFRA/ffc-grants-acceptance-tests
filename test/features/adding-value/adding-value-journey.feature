@@ -34,12 +34,16 @@ Feature: Adding Value Journey
         # adding-value
         Then the user should be at URL "adding-value"
         And should see heading "How will your project add value to the produce?"
-        When the user continues
+        When the user selects "Introducing a new product to your farm"
+        And continues
 
         # project-impact
         Then the user should be at URL "project-impact"
         And should see heading "What impact will the project have?"
-        When the user continues
+        When the user selects the following
+            | Increasing range of added-value products  |
+            | Increasing volume of added-value products |
+        And continues
 
         # future-customers
         Then the user should be at URL "future-customers"

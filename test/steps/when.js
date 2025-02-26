@@ -12,6 +12,15 @@ When(/^the user selects "([^"]*)?"$/, async (text) => {
   }
 })
 
+When(/^(?:the user selects|selects) the following$/, async (dataTable) => {
+  for (const row of dataTable.raw()) {
+    const element = await $(`//label[contains(text(),'${row[0]}')]/preceding-sibling::input`)
+    if (!(await element.isSelected())) {
+      await element.click()
+    }
+  }
+})
+
 When(/^(?:the user continues|continues)$/, async () => {
   await $(`//button[contains(text(),'Continue')]`).click()
 })
