@@ -23,7 +23,7 @@ Feature: Adding Value Input Validation
         # is-the-planned-project-in-england
         Then the user should be at URL "is-the-planned-project-in-england"
         When the user continues
-        Then the user should see error "Select is the planned project in england?"
+        Then the user should see error "Select is the planned project in England?"
         When the user selects "Yes"
         And continues
 
