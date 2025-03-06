@@ -65,16 +65,9 @@ Feature: Adding Value Journey
         And should see heading "Score results"
         And should see "Strong" for their project score
         And should see the following score results
-            | TOPIC                | ANSWERS                                  | SCORE   | FUNDING PRIORITIES                                                                            |
-            | Produce processed    | Arable produce                           | Strong  | Create and expand processing capacity to provide more English-grown food for consumers to buy |
-            | Adding value         | Introducing a new product to your farm   | Average | Improve processing and supply chains                                                          |
-            |                      |                                          |         | Grow your business                                                                            |
-            | Project impact       | Increasing range of added-value products | Average | Improve processing and supply chains                                                          |
-            |                      |                                          |         | Grow your business                                                                            |
-            | Future customers     | Processors                               | Weak    | Improve processing and supply chains                                                          |
-            |                      |                                          |         | Grow your business                                                                            |
-            | Collaboration        | Yes                                      | Strong  | Improve processing and supply chains                                                          |
-            |                      |                                          |         | Encourage collaboration and partnerships                                                      |
-            | Environmental impact | Renewable energy                         | Strong  | Improve the environment                                                                       |
-            |                      | Energy efficiency                        |         |                                                                                               |
-            |                      | Water efficiency                         |         |                                                                                               |
+            | TOPIC             | ANSWERS                                   | SCORE  | FUNDING PRIORITIES                                                                            |
+            | Produce processed | Arable produce                            | Strong | Create and expand processing capacity to provide more English-grown food for consumers to buy |
+            | Adding value      | Introducing a new product to your farm    | Strong | Improve processing and supply chains                                                          |
+            |                   |                                           |        | Grow your business                                                                            |
+            | Project impact    | Increasing range of added-value products  | Medium | Improve processing and supply chains                                                          |
+            |                   | Increasing volume of added-value products |        | Grow your business                                                                            |

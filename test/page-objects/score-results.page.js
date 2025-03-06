@@ -19,7 +19,7 @@ class ScoreResultsPage {
       }
 
       const topic = await $(`//h2/following-sibling::table/tbody/tr[${i}]/td[1]/strong`).getText()
-      const answers = await $$(`//h2/following-sibling::table/tbody/tr[${i}]/td[2]/ul/li`).map(async (li) => await li.getText())
+      const answers = await this.#answers(i)
       const score = await $(`//h2/following-sibling::table/tbody/tr[${i}]/td[3]/strong`).getText()
       const fundingPriorities = await $$(`//h2/following-sibling::table/tbody/tr[${i}]/td[3]/ul/li`).map(async (li) => await li.getText())
 
@@ -27,6 +27,14 @@ class ScoreResultsPage {
     }
 
     return scoreResults
+  }
+
+  async #answers(rowIndex) {
+    if (await $(`//h2/following-sibling::table/tbody/tr[${rowIndex}]/td[2]/ul`).isExisting()) {
+      return await $$(`//h2/following-sibling::table/tbody/tr[${rowIndex}]/td[2]/ul/li`).map(async (li) => await li.getText())
+    } else {
+      return [(await $(`//h2/following-sibling::table/tbody/tr[${rowIndex}]/td[2]`).getText()).trim()]
+    }
   }
 }
 
