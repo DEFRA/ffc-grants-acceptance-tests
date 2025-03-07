@@ -27,6 +27,26 @@ Feature: Adding Value Input Validation
         When the user selects "Yes"
         And continues
 
+        # what-is-the-estimated-cost-of-the-items
+        Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
+        When the user continues
+        Then the user should see error "Enter enter amount"
+        When the user enters "ABC" for "Enter amount"
+        And continues
+        Then the user should see error "Enter amount must be a number"
+        When the user enters "62499.999" for "Enter amount"
+        And continues
+        Then the user should see error "Enter amount must have 2 or fewer decimal places"
+        When the user enters "62500" for "Enter amount"
+        And continues
+
+        # can-you-pay-the-remaining-costs
+        Then the user should be at URL "an-you-pay-the-remaining-costs"
+        When the user continues
+        Then the user should see error "Select"
+        When the user selects "Yes"
+        And continues
+
         # products-processed
         Then the user should be at URL "products-processed"
         When the user continues

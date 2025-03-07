@@ -6,7 +6,7 @@ When(/^(?:the user clicks|clicks) on "([^"]*)?"$/, async (text) => {
 })
 
 When(/^the user selects "([^"]*)?"$/, async (text) => {
-  const element = await $(`//label[contains(text(),'${text}')]/preceding-sibling::input`)
+  const element = await $(`aria/${text}`)
   if (!(await element.isSelected())) {
     await element.click()
   }
@@ -14,7 +14,7 @@ When(/^the user selects "([^"]*)?"$/, async (text) => {
 
 When(/^(?:the user selects|selects) the following$/, async (dataTable) => {
   for (const row of dataTable.raw()) {
-    const element = await $(`//label[contains(text(),'${row[0]}')]/preceding-sibling::input`)
+    const element = await $(`aria/${row[0]}`)
     if (!(await element.isSelected())) {
       await element.click()
     }
@@ -22,17 +22,21 @@ When(/^(?:the user selects|selects) the following$/, async (dataTable) => {
 })
 
 When(/^(?:the user continues|continues)$/, async () => {
-  await $(`//button[contains(text(),'Continue')]`).click()
+  await $(`aria/Continue`).click()
 })
 
 When(/^(?:the user submits|submits) their form$/, async () => {
-  await $(`//button[contains(text(),'Send')]`).click()
+  await $(`aria/Send`).click()
 })
 
 When(/^(?:the user navigates|navigates) backward$/, async () => {
-  await $("//a[@class='govuk-back-link']").click()
+  await $(`//a[@class='govuk-back-link']`).click()
 })
 
 When(/^(?:the user chooses|chooses) to change their "([^"]*)?" answer$/, async (topic) => {
   await ScoreResultsPage.changeAnswerFor(topic)
+})
+
+When(/^(?:the user enters|enters) "([^"]*)?" for "([^"]*)?"$/, async (text, label) => {
+  await $(`aria/${label}`).setValue(text)
 })

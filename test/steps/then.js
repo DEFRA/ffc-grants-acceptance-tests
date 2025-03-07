@@ -1,5 +1,5 @@
 import { Then } from '@wdio/cucumber-framework'
-import poller from './poller'
+import { pollForSuccess } from './polling'
 import ScoreResult from '../dto/score-result'
 import ScoreResultsPage from '../page-objects/score-results.page'
 import SummaryAnswer from '../dto/summary-answer'
@@ -13,7 +13,7 @@ Then(/^(?:the user should|should) see heading "([^"]*)?"$/, async (text) => {
 })
 
 Then(/^(?:the user should|should) be at URL "([^"]*)?"$/, async (expectedPath) => {
-  const doesActualUrlEndWithExpectedPath = await poller.pollForSuccess(async () => {
+  const doesActualUrlEndWithExpectedPath = await pollForSuccess(async () => {
     const actualUrl = await browser.getUrl()
     return await actualUrl.endsWith(expectedPath)
   })

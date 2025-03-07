@@ -18,8 +18,7 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "what-is-the-legal-status-of-the-business"
         When the user navigates backward
         Then the user should be at URL "what-is-your-business"
-        When the user selects "A grower or producer of agricultural or horticultural produce"
-        And continues
+        When the user continues
         Then the user should be at URL "what-is-the-legal-status-of-the-business"
         When the user selects "Sole trader"
         And continues
@@ -28,18 +27,33 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "is-the-planned-project-in-england"
         When the user navigates backward
         Then the user should be at URL "what-is-the-legal-status-of-the-business"
-        When the user selects "Sole trader"
-        And continues
+        When the user continues
         Then the user should be at URL "is-the-planned-project-in-england"
+        When the user selects "Yes"
+        And continues
+
+        # what-is-the-estimated-cost-of-the-items
+        Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
+        When the user navigates backward
+        Then the user should be at URL "is-the-planned-project-in-england"
+        When the user continues
+        Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
+        When the user enters "62500" for "Enter amount"
+        And continues
+
+        Then the user should be at URL "can-you-pay-the-remaining-costs"
+        When the user navigates backward
+        Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
+        When the user continues
+        Then the user should be at URL "can-you-pay-the-remaining-costs"
         When the user selects "Yes"
         And continues
 
         # products-processed
         Then the user should be at URL "products-processed"
         When the user navigates backward
-        Then the user should be at URL "is-the-planned-project-in-england"
-        When the user selects "Yes"
-        And continues
+        Then the user should be at URL "can-you-pay-the-remaining-costs"
+        When the user continues
         Then the user should be at URL "products-processed"
         When the user selects "Arable produce"
         And continues
@@ -48,8 +62,7 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "adding-value"
         When the user navigates backward
         Then the user should be at URL "products-processed"
-        When the user selects "Arable produce"
-        And continues
+        When the user continues
         Then the user should be at URL "adding-value"
         When the user selects "Introducing a new product to your farm"
         When the user continues

@@ -25,6 +25,18 @@ Feature: Adding Value Journey
         When the user selects "Yes"
         And continues
 
+        # what-is-the-estimated-cost-of-the-items
+        Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
+        And should see heading "What is the estimated cost of the items?"
+        When the user enters "62500" for "Enter amount"
+        And continues
+
+        # can-you-pay-the-remaining-costs
+        Then the user should be at URL "can-you-pay-the-remaining-costs"
+        And should see heading "Can you pay the remaining costs of £37,500.00?"
+        When the user selects "Yes"
+        And continues
+
         # products-processed
         Then the user should be at URL "products-processed"
         And should see heading "What type of produce is being processed?"
