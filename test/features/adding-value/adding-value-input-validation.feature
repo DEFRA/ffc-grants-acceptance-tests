@@ -30,7 +30,7 @@ Feature: Adding Value Input Validation
         # what-is-the-estimated-cost-of-the-items
         Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
         When the user continues
-        Then the user should see error "Enter enter amount"
+        Then the user should see error "Enter amount"
         When the user enters "ABC" for "Enter amount"
         And continues
         Then the user should see error "Enter amount must be a number"
@@ -43,7 +43,7 @@ Feature: Adding Value Input Validation
         # can-you-pay-the-remaining-costs
         Then the user should be at URL "an-you-pay-the-remaining-costs"
         When the user continues
-        Then the user should see error "Select"
+        Then the user should see error "Select yes if you can pay the remaining costs"
         When the user selects "Yes"
         And continues
 
