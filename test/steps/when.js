@@ -38,5 +38,5 @@ When(/^(?:the user chooses|chooses) to change their "([^"]*)?" answer$/, async (
 })
 
 When(/^(?:the user enters|enters) "([^"]*)?" for "([^"]*)?"$/, async (text, label) => {
-  await $(`aria/${label}`).setValue(text)
+  await $(`//label[contains(text(),'${label}')]/following::input[@type='text']`).setValue(text)
 })
