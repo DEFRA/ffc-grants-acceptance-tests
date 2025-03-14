@@ -30,13 +30,13 @@ Feature: Adding Value Input Validation
         # what-is-the-estimated-cost-of-the-items
         Then the user should be at URL "what-is-the-estimated-cost-of-the-items"
         When the user continues
-        Then the user should see error "Enter amount"
+        Then the user should see error "Enter the estimated cost of the items"
         When the user enters "ABC" for "Enter amount"
         And continues
         Then the user should see error "Enter amount must be a number"
         When the user enters "62499.999" for "Enter amount"
         And continues
-        Then the user should see error "Enter amount must have 2 or fewer decimal places"
+        Then the user should see error "Enter amount must be a whole number"
         When the user enters "62500" for "Enter amount"
         And continues
 
