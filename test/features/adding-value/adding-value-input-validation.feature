@@ -37,6 +37,12 @@ Feature: Adding Value Input Validation
         When the user enters "62499.999" for "Enter amount"
         And continues
         Then the user should see error "Enter amount must be a whole number"
+        When the user enters "12345678" for "Enter amount"
+        And continues
+        Then the user should see error "Enter a whole number with a maximum of 7 digits"
+        When the user enters "0" for "Enter amount"
+        And continues
+        Then the user should see error "Enter a whole number with a maximum of 7 digits"
         When the user enters "62500" for "Enter amount"
         And continues
 
