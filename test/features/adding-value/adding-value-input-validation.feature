@@ -1,5 +1,5 @@
 Feature: Adding Value Input Validation
-
+@runme
     Scenario: Explore all input validation
         # start
         Given the user navigates to "/adding-value/start"
@@ -34,7 +34,7 @@ Feature: Adding Value Input Validation
         When the user enters "ABC" for "Enter amount"
         And continues
         Then the user should see error "Enter amount must be a number"
-        When the user enters "62499.999" for "Enter amount"
+        When the user enters "62499.99" for "Enter amount"
         And continues
         Then the user should see error "Enter amount must be a whole number"
         When the user enters "12345678" for "Enter amount"
@@ -71,3 +71,78 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "project-impact"
         When the user continues
         Then the user should see error "Select what impact will the project have?"
+        When the user selects the following
+            | Increasing range of added-value products |
+        And continues
+
+        # future-customers
+        Then the user should be at URL "future-customers"
+        When the user continues
+
+        # collaboration
+        Then the user should be at URL "collaboration"
+        When the user continues
+
+        # environmental-impact
+        Then the user should be at URL "environmental-impact"
+        When the user continues
+
+        # score-results
+        Then the user should be at URL "score-results"
+        When the user continues
+
+        # business-details
+        Then the user should be at URL "business-details"
+        When the user continues
+
+        # who-is-applying-for-this-grant
+        Then the user should be at URL "who-is-applying-for-this-grant"
+        When the user continues
+        Then the user should see error "Select who is applying for this grant?"
+        When the user selects "Agent"
+        And continues
+
+        # agent-details
+        Then the user should be at URL "agent-details"
+        When the user continues
+        Then the user should see the following errors
+            | Enter first name            |
+            | Enter last name             |
+            | Enter business name         |
+            | Enter email address         |
+            | Enter confirm email address |
+            | Enter mobile number         |
+            | Enter landline number       |
+            | Enter address line 1        |
+            | Enter town                  |
+            | Enter postcode              |
+        When the user enters the following
+            | FIELD                     | VALUE                                          |
+            | First name                | John                                           |
+            | Last name                 | Test-Agent                                     |
+            | Business name             | Test Agency Ltd                                |
+            | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Mobile number             | 07777 654321                                   |
+            | Landline number           | 01604 654321                                   |
+            | Address line 1            | High Street                                    |
+            | Address line 2 (optional) | Denton                                         |
+            | Town                      | Northampton                                    |
+            | County                    | Northamptonshire                               |
+            | Postcode                  | NN7 3NN                                        |
+        And continues
+
+        # applicant-details
+        Then the user should be at URL "applicant-details"
+        When the user continues
+        Then the user should see the following errors
+            | Enter first name            |
+            | Enter last name             |
+            | Enter email address         |
+            | Enter confirm email address |
+            | Enter mobile number         |
+            | Enter landline number       |
+            | Enter address line 1        |
+            | Enter town                  |
+            | Enter business postcode     |
+            | Enter project postcode      |

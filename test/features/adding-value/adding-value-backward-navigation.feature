@@ -65,7 +65,7 @@ Feature: Adding Value Backward Navigation
         When the user continues
         Then the user should be at URL "adding-value"
         When the user selects "Introducing a new product to your farm"
-        When the user continues
+        And continues
 
         # project-impact
         Then the user should be at URL "project-impact"
@@ -74,8 +74,8 @@ Feature: Adding Value Backward Navigation
         When the user continues
         Then the user should be at URL "project-impact"
         When the user selects the following
-            | Increasing range of added-value products  |
-        When the user continues
+            | Increasing range of added-value products |
+        And continues
 
         # future-customers
         Then the user should be at URL "future-customers"
@@ -107,3 +107,80 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "environmental-impact"
         When the user continues
         Then the user should be at URL "score-results"
+        When the user continues
+
+        # business-details
+        Then the user should be at URL "business-details"
+        When the user navigates backward
+        Then the user should be at URL "score-results"
+        When the user continues
+        Then the user should be at URL "business-details"
+        When the user continues
+
+        # who-is-applying-for-this-grant
+        Then the user should be at URL "who-is-applying-for-this-grant"
+        When the user navigates backward
+        Then the user should be at URL "business-details"
+        When the user continues
+        Then the user should be at URL "who-is-applying-for-this-grant"
+        When the user selects "Agent"
+        And continues
+
+        # agent-details
+        Then the user should be at URL "agent-details"
+        When the user navigates backward
+        Then the user should be at URL "who-is-applying-for-this-grant"
+        When the user continues
+        Then the user should be at URL "agent-details"
+        When the user enters the following
+            | FIELD                     | VALUE                                          |
+            | First name                | John                                           |
+            | Last name                 | Test-Agent                                     |
+            | Business name             | Test Agency Ltd                                |
+            | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Mobile number             | 07777 654321                                   |
+            | Landline number           | 01604 654321                                   |
+            | Address line 1            | High Street                                    |
+            | Address line 2 (optional) | Denton                                         |
+            | Town                      | Northampton                                    |
+            | County                    | Northamptonshire                               |
+            | Postcode                  | NN7 3NN                                        |
+        And continues
+
+        # applicant-details
+        Then the user should be at URL "applicant-details"
+        When the user navigates backward
+        Then the user should be at URL "agent-details"
+        When the user continues
+        Then the user should be at URL "applicant-details"
+        When the user enters the following
+            | FIELD                     | VALUE                                              |
+            | First name                | James                                              |
+            | Last name                 | Test-Farmer                                        |
+            | Email address             | cl-defra-gae-test-applicant-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-applicant-email@equalexperts.com |
+            | Mobile number             | 07777 123456                                       |
+            | Landline number           | 01604 123456                                       |
+            | Address line 1            | Test Farm                                          |
+            | Address line 2 (optional) | Cogenhoe                                           |
+            | Town                      | Northampton                                        |
+            | County                    | Northamptonshire                                   |
+            | Business postcode         | NN7 1NN                                            |
+            | Project postcode          | NN7 2NN                                            |
+        And continues
+
+        # check-your-details
+        Then the user should be at URL "check-your-details"
+        When the user navigates backward
+        Then the user should be at URL "applicant-details"
+        When the user continues
+        Then the user should be at URL "check-your-details"
+        When the user continues
+
+        # declaration
+        Then the user should be at URL "declaration"
+        When the user navigates backward
+        Then the user should be at URL "check-your-details"
+        When the user continues
+        Then the user should be at URL "declaration"

@@ -35,6 +35,19 @@ Then(/^(?:the user should|should) see error "([^"]*)?"$/, async (text) => {
   await expect($(`//div[@class="govuk-error-summary"]//a[contains(text(),'${text}')]`)).toBeDisplayed()
 })
 
+Then(/^(?:the user should|should) see the following errors$/, async (dataTable) => {
+  const expectedErrors = dataTable.raw().map((row) => row[0])
+  let actualErrors = []
+
+  await pollForSuccess(async () => {
+    // allow time for page to reload and render
+    actualErrors = await Promise.all(await $$('//div[@class="govuk-error-summary"]//a').map(async (e) => await e.getText()))
+    return actualErrors.length === expectedErrors.length
+  })
+
+  await expect(actualErrors).toEqual(expectedErrors)
+})
+
 Then(/^(?:the user should|should) see "([^"]*)?" for their project score$/, async (expectedScore) => {
   const actualScore = await ScoreResultsPage.score()
   await expect(actualScore).toEqual(expectedScore)

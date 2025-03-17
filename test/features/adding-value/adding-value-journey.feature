@@ -83,3 +83,63 @@ Feature: Adding Value Journey
             |                   |                                           |        | Grow your business                                                                            |
             | Project impact    | Increasing range of added-value products  | Medium | Improve processing and supply chains                                                          |
             |                   | Increasing volume of added-value products |        | Grow your business                                                                            |
+        When the user continues
+
+        # business-details
+        Then the user should be at URL "business-details"
+        And should see heading "Business Details"
+        When the user continues
+
+        # who-is-applying-for-this-grant
+        Then the user should be at URL "who-is-applying-for-this-grant"
+        And should see heading "Who is applying for this grant?"
+        When the user selects "Agent"
+        And continues
+
+        # agent-details
+        Then the user should be at URL "agent-details"
+        And should see heading "Agent's details"
+        When the user enters the following
+            | FIELD                     | VALUE                                          |
+            | First name                | John                                           |
+            | Last name                 | Test-Agent                                     |
+            | Business name             | Test Agency Ltd                                |
+            | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Mobile number             | 07777 654321                                   |
+            | Landline number           | 01604 654321                                   |
+            | Address line 1            | High Street                                    |
+            | Address line 2 (optional) | Denton                                         |
+            | Town                      | Northampton                                    |
+            | County                    | Northamptonshire                               |
+            | Postcode                  | NN7 3NN                                        |
+        And continues
+
+        # applicant-details
+        Then the user should be at URL "applicant-details"
+        And should see heading "Applicant's details"
+        When the user enters the following
+            | FIELD                     | VALUE                                                          |
+            | First name                | James                                                          |
+            | Last name                 | Test-Farmer                                                    |
+            | Email address             | cl-defra-gae-test-applicant-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-applicant-email@equalexperts.com |
+            | Mobile number             | 07777 123456                                                   |
+            | Landline number           | 01604 123456                                                   |
+            | Address line 1            | Test Farm                                                      |
+            | Address line 2 (optional) | Cogenhoe                                                       |
+            | Town                      | Northampton                                                    |
+            | County                    | Northamptonshire                                               |
+            | Business postcode         | NN7 1NN                                                        |
+            | Project postcode          | NN7 2NN                                                        |
+        And continues
+
+        # check-your-details
+        Then the user should be at URL "check-your-details"
+        And should see heading "Check your details"
+        When the user continues
+
+        # declaration
+        Then the user should be at URL "declaration"
+        And should see heading "Confirm and send"
+        When the user confirms and sends
