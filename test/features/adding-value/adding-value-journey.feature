@@ -1,5 +1,5 @@
 Feature: Adding Value Journey
-
+@runme
     Scenario: Apply for a grant
         # start
         Given the user navigates to "/adding-value/start"
@@ -143,3 +143,7 @@ Feature: Adding Value Journey
         Then the user should be at URL "declaration"
         And should see heading "Confirm and send"
         When the user confirms and sends
+
+        # status
+        Then the user should be at URL "status"
+        And should see heading "Form submitted"

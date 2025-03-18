@@ -1,5 +1,5 @@
 Feature: Adding Value Input Validation
-@runme
+
     Scenario: Explore all input validation
         # start
         Given the user navigates to "/adding-value/start"
