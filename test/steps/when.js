@@ -54,5 +54,5 @@ When(/^the user enters the following$/, async (dataTable) => {
 })
 
 When(/^(?:the user confirms|confirms) and sends$/, async () => {
-  await $(`aria/Confirm and send`).click()
+  await $(`//button[contains(text(),'Confirm and send')]`).click()
 })

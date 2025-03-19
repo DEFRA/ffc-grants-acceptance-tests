@@ -1,5 +1,5 @@
 Feature: Adding Value Journey
-    @runme
+
     Scenario: Apply for a grant
         # start
         Given the user navigates to "/adding-value/start"
