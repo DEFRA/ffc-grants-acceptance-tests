@@ -1,5 +1,5 @@
 Feature: Adding Value Journey
-@runme
+    @runme
     Scenario: Apply for a grant
         # start
         Given the user navigates to "/adding-value/start"
@@ -119,19 +119,19 @@ Feature: Adding Value Journey
         Then the user should be at URL "applicant-details"
         And should see heading "Applicant's details"
         When the user enters the following
-            | FIELD                     | VALUE                                                          |
-            | First name                | James                                                          |
-            | Last name                 | Test-Farmer                                                    |
+            | FIELD                     | VALUE                                              |
+            | First name                | James                                              |
+            | Last name                 | Test-Farmer                                        |
             | Email address             | cl-defra-gae-test-applicant-email@equalexperts.com |
             | Confirm email address     | cl-defra-gae-test-applicant-email@equalexperts.com |
-            | Mobile number             | 07777 123456                                                   |
-            | Landline number           | 01604 123456                                                   |
-            | Address line 1            | Test Farm                                                      |
-            | Address line 2 (optional) | Cogenhoe                                                       |
-            | Town                      | Northampton                                                    |
-            | County                    | Northamptonshire                                               |
-            | Business postcode         | NN7 1NN                                                        |
-            | Project postcode          | NN7 2NN                                                        |
+            | Mobile number             | 07777 123456                                       |
+            | Landline number           | 01604 123456                                       |
+            | Address line 1            | Test Farm                                          |
+            | Address line 2 (optional) | Cogenhoe                                           |
+            | Town                      | Northampton                                        |
+            | County                    | Northamptonshire                                   |
+            | Business postcode         | NN7 1NN                                            |
+            | Project postcode          | NN7 2NN                                            |
         And continues
 
         # check-your-details
