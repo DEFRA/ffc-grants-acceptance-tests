@@ -144,6 +144,7 @@ Feature: Adding Value Journey
         And should see heading "Confirm and send"
         When the user confirms and sends
 
-        # status
-        Then the user should be at URL "status"
-        And should see heading "Form submitted"
+        # confirmation
+        Then the user should be at URL "confirmation"
+        And should see heading "Details submitted"
+        And should see a reference number prefixed "AV" for their application

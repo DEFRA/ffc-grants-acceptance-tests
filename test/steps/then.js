@@ -80,3 +80,8 @@ Then(/^(?:the user should|should) see the following score results$/, async (data
   const actualScoreResults = await ScoreResultsPage.results()
   await expect(actualScoreResults).toEqual(expectedScoreResults)
 })
+
+Then(/^(?:the user should|should) see a reference number prefixed "([^"]*)?" for their application$/, async (prefix) => {
+  const selector = $('//h1/following-sibling::div[1]/strong')
+  await expect(selector).toHaveText(expect.stringContaining(prefix))
+})
