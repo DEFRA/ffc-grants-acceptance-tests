@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import { browser } from '@wdio/globals'
+import { generate } from 'multiple-cucumber-html-reporter'
 
 const debug = process.env.DEBUG
 const oneHour = 60 * 60 * 1000
@@ -159,21 +160,12 @@ export const config = {
   // see also: https://webdriver.io/docs/dot-reporter
 
   reporters: [
+    'spec',
     [
-      // Spec reporter provides rolling output to the logger so you can see it in-progress
-      'spec',
+      'cucumberjs-json',
       {
-        addConsoleLogs: true,
-        realtimeReporting: true,
-        color: false
-      }
-    ],
-    [
-      // Allure is used to generate the final HTML report
-      'allure',
-      {
-        outputDir: 'allure-results',
-        useCucumberStepReporter: true
+        jsonFolder: './html-reports/json',
+        language: 'en'
       }
     ]
   ],
@@ -339,6 +331,11 @@ export const config = {
    * @param {<Object>} results object containing test results
    */
   onComplete: function (exitCode, config, capabilities, results) {
+    generate({
+      jsonDir: './html-reports/json',
+      reportPath: './html-reports/html'
+    })
+
     // !Do Not Remove! Required for test status to show correctly in portal.
     if (results?.failed && results.failed > 0) {
       fs.writeFileSync('FAILED', JSON.stringify(results))

@@ -1,8 +1,7 @@
-import allure from 'allure-commandline'
 import { browser } from '@wdio/globals'
+import { generate } from 'multiple-cucumber-html-reporter'
 
 const debug = process.env.DEBUG
-const oneMinute = 60 * 1000
 const oneHour = 60 * 60 * 1000
 
 export const config = {
@@ -145,10 +144,10 @@ export const config = {
   reporters: [
     'spec',
     [
-      'allure',
+      'cucumberjs-json',
       {
-        outputDir: 'allure-results',
-        useCucumberStepReporter: true
+        jsonFolder: './html-reports/json',
+        language: 'en'
       }
     ]
   ],
@@ -321,22 +320,9 @@ export const config = {
    * @param {<Object>} results object containing test results
    */
   onComplete: function (exitCode, config, capabilities, results) {
-    const reportError = new Error('Could not generate Allure report')
-    const generation = allure(['generate', 'allure-results', '--clean'])
-
-    return new Promise((resolve, reject) => {
-      const generationTimeout = setTimeout(() => reject(reportError), oneMinute)
-
-      generation.on('exit', function (exitCode) {
-        clearTimeout(generationTimeout)
-
-        if (exitCode !== 0) {
-          return reject(reportError)
-        }
-
-        allure(['open'])
-        resolve()
-      })
+    generate({
+      jsonDir: './html-reports/json',
+      reportPath: './html-reports/html'
     })
   },
 
