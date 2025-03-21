@@ -45,13 +45,13 @@ Feature: Adding Value Journey
 
         # adding-value
         Then the user should be at URL "adding-value"
-        And should see heading "How will your project add value to the produce?"
+        And should see heading "How will this project add value to the produce?"
         When the user selects "Introducing a new product to your farm"
         And continues
 
         # project-impact
         Then the user should be at URL "project-impact"
-        And should see heading "What impact will the project have?"
+        And should see heading "What impact will this project have?"
         When the user selects the following
             | Increasing range of added-value products  |
             | Increasing volume of added-value products |
@@ -69,7 +69,7 @@ Feature: Adding Value Journey
 
         # environmental-impact
         Then the user should be at URL "environmental-impact"
-        And should see heading "How will the project improve the environment?"
+        And should see heading "How will this project improve the environment?"
         When the user continues
 
         # score-results
@@ -147,4 +147,4 @@ Feature: Adding Value Journey
         # confirmation
         Then the user should be at URL "confirmation"
         And should see heading "Details submitted"
-        And should see a reference number prefixed "AV" for their application
+        And should see an "AV" reference number for their application
