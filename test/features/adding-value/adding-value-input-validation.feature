@@ -63,7 +63,7 @@ Feature: Adding Value Input Validation
         # adding-value
         Then the user should be at URL "adding-value"
         When the user continues
-        Then the user should see error "Select how will your project add value to the produce?"
+        Then the user should see error "Select how will this project add value to the produce?"
         When the user selects "Introducing a new product to your farm"
         And continues
 
