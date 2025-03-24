@@ -106,16 +106,16 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "agent-details"
         When the user continues
         Then the user should see the following errors
-            | Enter first name            |
-            | Enter last name             |
-            | Enter business name         |
-            | Enter email address         |
-            | Enter confirm email address |
-            | Enter mobile number         |
-            | Enter landline number       |
-            | Enter address line 1        |
-            | Enter town                  |
-            | Enter postcode              |
+            | Enter your first name             |
+            | Enter your last name              |
+            | Enter your business name          |
+            | Enter your email address          |
+            | Confirm your email address        |
+            | Enter a mobile number             |
+            | Enter a landline number           |
+            | Enter your address line 1         |
+            | Enter your town                   |
+            | Enter your postcode, like AA1 1AA |
         When the user enters the following
             | FIELD                     | VALUE                                          |
             | First name                | John                                           |
@@ -136,13 +136,13 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "applicant-details"
         When the user continues
         Then the user should see the following errors
-            | Enter first name            |
-            | Enter last name             |
-            | Enter email address         |
-            | Enter confirm email address |
-            | Enter mobile number         |
-            | Enter landline number       |
-            | Enter address line 1        |
-            | Enter town                  |
-            | Enter business postcode     |
-            | Enter project postcode      |
+            | Enter your first name             |
+            | Enter your last name              |
+            | Enter your email address          |
+            | Confirm your email address        |
+            | Enter a mobile number             |
+            | Enter a landline number           |
+            | Enter your address line 1         |
+            | Enter your town                   |
+            | Enter your postcode, like AA1 1AA |
+            | Enter your postcode, like AA1 1AA |
