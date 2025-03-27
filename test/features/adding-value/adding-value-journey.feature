@@ -111,7 +111,7 @@ Feature: Adding Value Journey
             | Address line 1            | High Street                                    |
             | Address line 2 (optional) | Denton                                         |
             | Town                      | Northampton                                    |
-            | County                    | Northamptonshire                               |
+            | County (optional)         | Northamptonshire                               |
             | Postcode                  | NN7 3NN                                        |
         And continues
 
@@ -129,8 +129,8 @@ Feature: Adding Value Journey
             | Address line 1            | Test Farm                                          |
             | Address line 2 (optional) | Cogenhoe                                           |
             | Town                      | Northampton                                        |
-            | County                    | Northamptonshire                                   |
-            | Business postcode         | NN7 1NN                                            |
+            | County (optional)         | Northamptonshire                                   |
+            | Postcode                  | NN7 1NN                                            |
             | Project postcode          | NN7 2NN                                            |
         And continues
 
