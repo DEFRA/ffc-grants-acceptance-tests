@@ -141,4 +141,4 @@ Feature: Adding Value Input Validation
             | Enter a mobile number      |
             | Enter a landline number    |
             | Enter address line 1       |
-            | Enter postcode             |
+            | Enter project postcode     |
