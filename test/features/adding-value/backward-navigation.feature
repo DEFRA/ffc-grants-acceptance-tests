@@ -1,4 +1,4 @@
-Feature: Backward Navigation
+Feature: Adding Value Backward Navigation
 
     Scenario: Explore all backward navigation options
         # start
