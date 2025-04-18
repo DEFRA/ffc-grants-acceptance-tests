@@ -83,3 +83,15 @@ Then(/^(?:the user should|should) see (?:a|an) "([^"]*)?" reference number for t
   const selector = $('//h1/following-sibling::div[1]/strong')
   await expect(selector).toHaveText(expect.stringContaining(prefix))
 })
+
+Then(/^(?:the user should|should) see body "([^"]*)?"$/, async (text) => {
+  await expect($(`//p[@class='govuk-body' and contains(text(),'${text}')]`)).toBeDisplayed()
+})
+
+Then(/^(?:the user should|should) see hint "([^"]*)?"$/, async (text) => {
+  await expect($(`//div[@class="govuk-hint" and contains(text(),'${text}')]`)).toBeDisplayed()
+})
+
+Then(/^(?:the user should|should) see warning "([^"]*)?"$/, async (text) => {
+  await expect($(`//div[@class='govuk-warning-text']//strong[text()[contains(.,'${text}')]]`)).toBeDisplayed()
+})
