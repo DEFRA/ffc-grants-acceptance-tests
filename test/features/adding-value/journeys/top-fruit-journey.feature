@@ -1,4 +1,4 @@
-Feature: Top Fruit Journey
+Feature: Adding Value Top Fruit Journey
 
     Scenario: Successfully apply for a grant on the Top Fruit journey
         - while awaiting planning permission

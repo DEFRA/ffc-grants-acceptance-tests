@@ -1,4 +1,4 @@
-Feature: Smaller Abattoir Journey
+Feature: Adding Value Smaller Abattoir Journey
 
     Scenario: Successfully apply for a grant on the Smaller Abattoir journey
         - using mechanisation
