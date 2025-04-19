@@ -2,7 +2,7 @@ Feature: Adding Value Top Fruit Journey
 
     Scenario: Successfully apply for a grant on the Top Fruit journey
         - while awaiting planning permission
-        - as a tenant farmer
+        - as a tenant farmer with a short tenancy
         - receiving an average score
         - as an agent
 
@@ -55,8 +55,13 @@ Feature: Adding Value Top Fruit Journey
         # tenancy-length
         Then the user should be at URL "tenancy-length"
         And should see heading "Do you have a tenancy agreement for 5 years after the final grant payment?"
-        When the user selects "Yes"
+        When the user selects "No"
         And continues
+
+        # may-apply-tenancy-length
+        Then the user should be at URL "may-apply-tenancy-length"
+        And should see heading "You may be able to apply for a grant from this scheme"
+        When the user continues
 
         # smaller-abattoir
         Then the user should be at URL "smaller-abattoir"

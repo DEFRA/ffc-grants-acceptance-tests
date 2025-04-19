@@ -13,7 +13,7 @@ class ScoreResultsPage {
   async results() {
     const scoreResults = []
 
-    for (var i = 1; ; i++) {
+    for (let i = 1; ; i++) {
       if (!(await $(`//h2/following-sibling::table/tbody/tr[${i}]`).isExisting())) {
         break
       }

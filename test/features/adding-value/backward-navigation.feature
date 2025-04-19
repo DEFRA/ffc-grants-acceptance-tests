@@ -70,11 +70,19 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "tenancy-length"
         When the user navigates backward
         Then the user should be at URL "tenancy"
-        And continues
+        When the user continues
         Then the user should be at URL "tenancy-length"
         And should see heading "Do you have a tenancy agreement for 5 years after the final grant payment?"
-        When the user selects "Yes"
+        When the user selects "No"
         And continues
+
+        # may-apply-tenancy-length
+        Then the user should be at URL "may-apply-tenancy-length"
+        When the user navigates backward
+        Then the user should be at URL "tenancy-length"
+        When the user continues
+        Then the user should be at URL "may-apply-tenancy-length"
+        When the user continues
 
         # smaller-abattoir
         Then the user should be at URL "smaller-abattoir"
@@ -118,7 +126,7 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "project-items"
         When the user navigates backward
         Then the user should be at URL "fruit-storage"
-        And continues
+        When the user continues
         Then the user should be at URL "project-items"
         And should see heading "What eligible items does your project need?"
         When the user selects the following
@@ -129,7 +137,7 @@ Feature: Adding Value Backward Navigation
         Then the user should be at URL "storage"
         When the user navigates backward
         Then the user should be at URL "project-items"
-        And continues
+        When the user continues
         Then the user should be at URL "storage"
         And should see heading "Does your project also need storage facilities?"
         When the user selects "Yes, we will need storage facilities"
@@ -152,7 +160,7 @@ Feature: Adding Value Backward Navigation
         # When the user continues
         # Then the user should be at URL "potential-amount"
         # And should see heading "Potential grant funding"
-        # And continues
+        # When the user continues
 
         # remaining-costs
         Then the user should be at URL "remaining-costs"
@@ -334,7 +342,7 @@ Feature: Adding Value Backward Navigation
         When the user continues
         Then the user should be at URL "check-details"
         And should see heading "Check your details"
-        And continues
+        When the user continues
 
         # declaration
         Then the user should be at URL "declaration"

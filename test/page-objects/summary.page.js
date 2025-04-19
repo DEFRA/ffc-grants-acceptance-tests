@@ -5,7 +5,7 @@ class SummaryPage {
   async answers() {
     const answers = []
 
-    for (var i = 1; ; i++) {
+    for (let i = 1; ; i++) {
       if (!(await $(`//h1/following-sibling::dl/div[${i}]`).isExisting())) {
         break
       }

@@ -4,20 +4,19 @@ This is the acceptance test suite for non-land based grant application journeys 
 
 ## Running the test suite
 
-There are 2 WebdriverIO config files, each used with its own command:
+There are 2 WebdriverIO config files:
 
 ```bash
 wdio.local.conf.js
 ------------------
-# Used to run tests locally using a local instance of Chrome
+# used to run tests locally using a local instance of Chrome
 npm run test:local
 ```
 
 ```bash
 wdio.conf.js
--------------------------
-# Used to run tests in the portal aghainst the hosted Chrome instance
-#Run in the CDP Portal
+------------
+# used to run tests in the portal aghainst the hosted Chrome instance
 ```
 
 ### Licence

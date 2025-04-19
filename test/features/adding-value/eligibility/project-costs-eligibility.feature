@@ -73,7 +73,7 @@ Feature: Adding Value Project Costs Specific Eligibility and Elimination
         When the user enters "62500" for "Enter amount"
         And continues
 
-        # # potential-amount-solar [to be added in TGC-647]
+        # # potential-amount [to be added in TGC-647]
         # Then the user should be at URL "potential-amount"
         # And should see heading "Potential grant funding"
         # And continues
