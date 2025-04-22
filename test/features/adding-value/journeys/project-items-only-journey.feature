@@ -3,6 +3,7 @@ Feature: Adding Value Project Items-Only Journey
     Scenario: Successfully apply for a grant on the Project Items-only journey
         - checking storage facilities percentage
         - with storage facilities
+        - with potential grant funding below the maximum
         - receiving an average score
         - as the applicant
 
@@ -82,15 +83,15 @@ Feature: Adding Value Project Items-Only Journey
         When the user enters "125000" for "Enter amount"
         And continues
 
-        # potential-amount [to be added in TGC-647]
-        # Then the user should be at URL "potential-amount"
-        # And should see heading "Potential grant funding"
-        # And should see body "You may be able to apply for grant funding of up to £50,000 (40% of £125,000)."
-        # And continues
+        # potential-funding
+        Then the user should be at URL "potential-funding"
+        And should see heading "Potential grant funding"
+        And should see body "You may be able to apply for grant funding of up to £50,000 (40% of £125,000)."
+        And continues
 
         # remaining-costs
         Then the user should be at URL "remaining-costs"
-        #And should see heading "Can you pay the remaining costs of £75,000?" [to be fixed in TGC-631]
+        And should see heading "Can you pay the remaining costs of £75,000?"
         When the user selects "Yes"
         And continues
 

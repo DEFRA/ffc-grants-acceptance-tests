@@ -153,22 +153,22 @@ Feature: Adding Value Backward Navigation
         When the user enters "62500" for "Enter amount"
         And continues
 
-        # # potential-amount [to be added in TGC-647]
-        # Then the user should be at URL "potential-amount"
-        # When the user navigates backward
-        # Then the user should be at URL "project-cost"
-        # When the user continues
-        # Then the user should be at URL "potential-amount"
-        # And should see heading "Potential grant funding"
-        # When the user continues
+        # potential-funding
+        Then the user should be at URL "potential-funding"
+        When the user navigates backward
+        Then the user should be at URL "project-cost"
+        When the user continues
+        Then the user should be at URL "potential-funding"
+        And should see heading "Potential grant funding"
+        When the user continues
 
         # remaining-costs
         Then the user should be at URL "remaining-costs"
         When the user navigates backward
-        # Then the user should be at URL "potential-amount" [to be added in TGC-647]
+        Then the user should be at URL "potential-funding"
         When the user continues
         Then the user should be at URL "remaining-costs"
-        # And should see heading "Can you pay the remaining costs of £75,000?" [to be fixed in TGC-631]
+        And should see heading "Can you pay the remaining costs of £37,500?"
         When the user selects "Yes"
         And continues
 

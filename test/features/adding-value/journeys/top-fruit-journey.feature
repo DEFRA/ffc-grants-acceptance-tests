@@ -3,6 +3,7 @@ Feature: Adding Value Top Fruit Journey
     Scenario: Successfully apply for a grant on the Top Fruit journey
         - while awaiting planning permission
         - as a tenant farmer with a short tenancy
+        - with potential grant funding below the maximum
         - receiving an average score
         - as an agent
 
@@ -81,15 +82,15 @@ Feature: Adding Value Top Fruit Journey
         When the user enters "250000" for "Enter amount"
         And continues
 
-        # potential-amount [to be added in TGC-647]
-        # Then the user should be at URL "potential-amount"
-        # And should see heading "Potential grant funding"
-        # And should see body "You may be able to apply for grant funding of up to £100,000 (40% of £250,000)."
-        # And continues
+        # potential-funding
+        Then the user should be at URL "potential-funding"
+        And should see heading "Potential grant funding"
+        And should see body "You may be able to apply for grant funding of up to £100,000 (40% of £250,000)."
+        And continues
 
         # remaining-costs
         Then the user should be at URL "remaining-costs"
-        # And should see heading "Can you pay the remaining costs of £150,000?" [to be fixed in TGC-631]
+        And should see heading "Can you pay the remaining costs of £150,000?"
         When the user selects "Yes"
         And continues
 

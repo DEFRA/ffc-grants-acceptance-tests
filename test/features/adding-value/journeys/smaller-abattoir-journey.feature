@@ -1,6 +1,7 @@
 Feature: Adding Value Smaller Abattoir Journey
 
     Scenario: Successfully apply for a grant on the Smaller Abattoir journey
+        - with maximum potential grant funding
         - using mechanisation
         - receiving a strong score
         - as the applicant
@@ -74,18 +75,18 @@ Feature: Adding Value Smaller Abattoir Journey
         # project-cost
         Then the user should be at URL "project-cost"
         And should see heading "What is the estimated cost of the items?"
-        When the user enters "100000" for "Enter amount"
+        When the user enters "1000000" for "Enter amount"
         And continues
 
-        # potential-amount [to be added in TGC-647]
-        # Then the user should be at URL "potential-amount"
-        # And should see heading "Potential grant funding"
-        # And should see body "You may be able to apply for a grant of up to £52,500, based on the total estimated cost of £150,000."
-        # And continues
+        # potential-funding
+        Then the user should be at URL "potential-funding"
+        And should see heading "Potential grant funding"
+        And should see body "You may be able to apply for grant funding of up to £300,000, based on the estimated cost of £1,000,000."
+        And continues
 
         # remaining-costs
         Then the user should be at URL "remaining-costs"
-        # And should see heading "Can you pay the remaining costs of £97,500?" [to be fixed in TGC-631]
+        And should see heading "Can you pay the remaining costs of £700,000?"
         When the user selects "Yes"
         And continues
 

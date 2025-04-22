@@ -122,14 +122,14 @@ Feature: Adding Value Input Validation
         When the user enters "62500" for "Enter amount"
         And continues
 
-        # potential-amount [to be added in TGC-647]
-        # Then the user should be at URL "potential-amount"
-        # And should see heading "Potential grant funding"
-        # And continues
+        # potential-funding
+        Then the user should be at URL "potential-funding"
+        And should see heading "Potential grant funding"
+        And continues
 
         # remaining-costs
         Then the user should be at URL "remaining-costs"
-        # And should see heading "Can you pay the remaining costs of £75,000?" [to be fixed in TGC-631]
+        And should see heading "Can you pay the remaining costs of £37,500?"
         When the user continues
         Then the user should see error "Select yes if you can pay the remaining costs"
         When the user selects "Yes"
