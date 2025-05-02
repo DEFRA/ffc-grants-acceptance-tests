@@ -289,33 +289,33 @@ Feature: Adding Value Backward Navigation
         When the user selects "Agent"
         And continues
 
-        # agents-details
-        # Then the user should be at URL "agents-details" [TO BE FIXED ON TGC-631]
+        # agent-details
+        Then the user should be at URL "agent-details"
         When the user navigates backward
         Then the user should be at URL "applying"
         When the user continues
-        # Then the user should be at URL "agents-details"
-        # And should see heading "Agent's details"
-        # When the user enters the following
-        #     | FIELD                     | VALUE                                          |
-        #     | First name                | John                                           |
-        #     | Last name                 | Test-Agent                                     |
-        #     | Business name             | Test Agency Ltd                                |
-        #     | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
-        #     | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
-        #     | Mobile phone number       | 07777 654321                                   |
-        #     | Landline number           | 01604 654321                                   |
-        #     | Address line 1            | High Street                                    |
-        #     | Address line 2 (optional) | Denton                                         |
-        #     | Town                      | Northampton                                    |
-        #     | County (optional)         | Northamptonshire                               |
-        #     | Postcode                  | NN7 3NN                                        |
+        Then the user should be at URL "agent-details"
+        And should see heading "Agent's details"
+        When the user enters the following
+            | FIELD                     | VALUE                                          |
+            | First name                | John                                           |
+            | Last name                 | Test-Agent                                     |
+            | Business name             | Test Agency Ltd                                |
+            | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Mobile number             | 07777 654321                                   |
+            | Landline number           | 01604 654321                                   |
+            | Address line 1            | High Street                                    |
+            | Address line 2 (optional) | Denton                                         |
+            | Town                      | Northampton                                    |
+            | County (optional)         | Northamptonshire                               |
+            | Postcode                  | NN7 3NN                                        |
         And continues
 
         # applicant-details
         Then the user should be at URL "applicant-details"
         When the user navigates backward
-        # Then the user should be at URL "agents-details" [TO BE FIXED ON TGC-631]
+        Then the user should be at URL "agent-details"
         When the user continues
         Then the user should be at URL "applicant-details"
         And should see heading "Applicant's details"

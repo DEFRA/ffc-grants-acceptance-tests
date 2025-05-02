@@ -232,37 +232,34 @@ Feature: Adding Value Input Validation
         When the user selects "Agent"
         And continues
 
-        # agents-details
-        # Then the user should be at URL "agents-details" [TO BE FIXED ON TGC-631]
-        # And should see heading "Agent's details"
-        # When the user continues
-        # Then the user should see the following errors
-        #     | Enter your first name                                                             |
-        #     | Enter your last name                                                              |
-        #     | Enter your business name                                                          |
-        #     | Enter your email address                                                          |
-        #     | Confirm your email address                                                        |
-        #     | Enter a mobile number (if you do not have a mobile, enter your landline number)   |
-        #     | Enter a landline number (if you do not have a landline, enter your mobile number) |
-        #     | Enter your address line 1                                                         |
-        #     | Enter your town                                                                   |
-        #     | Select your county                                                                |
-        #     | Enter your postcode, like AA1 1AA                                                 |
-        # When the user enters the following
-        #     | FIELD                     | VALUE                                          |
-        #     | First name                | John                                           |
-        #     | Last name                 | Test-Agent                                     |
-        #     | Business name             | Test Agency Ltd                                |
-        #     | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
-        #     | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
-        #     | Mobile phone number       | 07777 654321                                   |
-        #     | Landline number           | 01604 654321                                   |
-        #     | Address line 1            | High Street                                    |
-        #     | Address line 2 (optional) | Denton                                         |
-        #     | Town                      | Northampton                                    |
-        #     | County (optional)         | Northamptonshire                               |
-        #     | Postcode                  | NN7 3NN                                        |
-        # And continues
+        # agent-details
+        Then the user should be at URL "agent-details"
+        And should see heading "Agent's details"
+        When the user continues
+        Then the user should see the following errors
+            | Enter your first name      |
+            | Enter your last name       |
+            | Enter your business name   |
+            | Enter your email address   |
+            | Confirm your email address |
+            | Enter a mobile number      |
+            | Enter a landline number    |
+            | Enter address line 1       |
+        When the user enters the following
+            | FIELD                     | VALUE                                          |
+            | First name                | John                                           |
+            | Last name                 | Test-Agent                                     |
+            | Business name             | Test Agency Ltd                                |
+            | Email address             | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Confirm email address     | cl-defra-gae-test-agent-email@equalexperts.com |
+            | Mobile number             | 07777 654321                                   |
+            | Landline number           | 01604 654321                                   |
+            | Address line 1            | High Street                                    |
+            | Address line 2 (optional) | Denton                                         |
+            | Town                      | Northampton                                    |
+            | County (optional)         | Northamptonshire                               |
+            | Postcode                  | NN7 3NN                                        |
+        And continues
 
         # applicant-details
         Then the user should be at URL "applicant-details"
@@ -277,6 +274,7 @@ Feature: Adding Value Input Validation
             | Enter a landline number    |
             | Enter address line 1       |
             | Enter postcode             |
+            # [TODO: raise defect] should be 'Enter project postcode'
         When the user enters the following
             | FIELD                     | VALUE                                              |
             | First name                | James                                              |
