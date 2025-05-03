@@ -3,7 +3,7 @@ Feature: Adding Value Backward Navigation
     Scenario: Explore all backward navigation options
         # start
         Given the user navigates to "/adding-value/start"
-        And should see heading "Check if you can apply for a Farming Transformation Fund Adding Value Grant"
+        Then the user should see heading "Check if you can apply for a Farming Transformation Fund Adding Value Grant"
         When the user clicks on "Start now"
 
         # nature-of-business
