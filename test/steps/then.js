@@ -13,11 +13,7 @@ Then(/^(?:the user should|should) see heading "([^"]*)?"$/, async (text) => {
 })
 
 Then(/^(?:the user should|should) be at URL "([^"]*)?"$/, async (expectedPath) => {
-  const doesActualUrlEndWithExpectedPath = await pollForSuccess(async () => {
-    const actualUrl = await browser.getUrl()
-    return await actualUrl.endsWith(expectedPath)
-  })
-  await expect(doesActualUrlEndWithExpectedPath).toBe(true)
+  await expect(browser).toHaveUrl(expect.stringContaining(expectedPath))
 })
 
 Then(/^(?:the user should|should) see the following answers$/, async (dataTable) => {
