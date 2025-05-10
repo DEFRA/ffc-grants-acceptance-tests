@@ -5,18 +5,18 @@ import ScoreResultsPage from '../page-objects/score-results.page'
 import SummaryAnswer from '../dto/summary-answer'
 import SummaryPage from '../page-objects/summary.page'
 
-Then(/^(?:the user should|should) see heading "([^"]*)?"$/, async (text) => {
+Then('(the user )should see heading {string}', async (text) => {
   if (text.indexOf("'") > -1) {
     text = text.substring(0, text.indexOf("'"))
   }
   await expect($(`//h1[contains(text(),'${text}')]`)).toBeDisplayed()
 })
 
-Then(/^(?:the user should|should) be at URL "([^"]*)?"$/, async (expectedPath) => {
+Then('(the user )should be at URL {string}', async (expectedPath) => {
   await expect(browser).toHaveUrl(expect.stringContaining(expectedPath))
 })
 
-Then(/^(?:the user should|should) see the following answers$/, async (dataTable) => {
+Then('(the user )should see the following answers', async (dataTable) => {
   const expectedAnswers = []
   for (const row of dataTable.hashes()) {
     expectedAnswers.push(new SummaryAnswer(row.QUESTION, row.ANSWER))
@@ -25,11 +25,11 @@ Then(/^(?:the user should|should) see the following answers$/, async (dataTable)
   await expect(actualAnswers).toEqual(expectedAnswers)
 })
 
-Then(/^(?:the user should|should) see error "([^"]*)?"$/, async (text) => {
+Then('(the user )should see error {string}', async (text) => {
   await expect($(`//div[@class="govuk-error-summary"]//a[contains(text(),'${text}')]`)).toBeDisplayed()
 })
 
-Then(/^(?:the user should|should) see the following errors$/, async (dataTable) => {
+Then('(the user )should see the following errors', async (dataTable) => {
   const expectedErrors = dataTable.raw().map((row) => row[0])
   let actualErrors = []
 
@@ -42,12 +42,12 @@ Then(/^(?:the user should|should) see the following errors$/, async (dataTable) 
   await expect(actualErrors).toEqual(expectedErrors)
 })
 
-Then(/^(?:the user should|should) see "([^"]*)?" for their project score$/, async (expectedScore) => {
+Then('(the user )should see {string} for their project score', async (expectedScore) => {
   const actualScore = await ScoreResultsPage.score()
   await expect(actualScore).toEqual(expectedScore)
 })
 
-Then(/^(?:the user should|should) see the following score results$/, async (dataTable) => {
+Then('(the user )should see the following score results', async (dataTable) => {
   const expectedScoreResults = []
   let scoreResult = {}
 
@@ -75,19 +75,19 @@ Then(/^(?:the user should|should) see the following score results$/, async (data
   await expect(actualScoreResults).toEqual(expectedScoreResults)
 })
 
-Then(/^(?:the user should|should) see (?:a|an) "([^"]*)?" reference number for their application$/, async (prefix) => {
+Then('(the user )should see a/an {string} reference number for their application', async (prefix) => {
   const selector = $('//h1/following-sibling::div[1]/strong')
   await expect(selector).toHaveText(expect.stringContaining(prefix))
 })
 
-Then(/^(?:the user should|should) see body "([^"]*)?"$/, async (text) => {
+Then('(the user )should see body {string}', async (text) => {
   await expect($(`//p[@class='govuk-body' and contains(text(),'${text}')]`)).toBeDisplayed()
 })
 
-Then(/^(?:the user should|should) see hint "([^"]*)?"$/, async (text) => {
+Then('(the user )should see hint {string}', async (text) => {
   await expect($(`//div[@class="govuk-hint" and contains(text(),'${text}')]`)).toBeDisplayed()
 })
 
-Then(/^(?:the user should|should) see warning "([^"]*)?"$/, async (text) => {
+Then('(the user )should see warning {string}', async (text) => {
   await expect($(`//div[@class='govuk-warning-text']//strong[text()[contains(.,'${text}')]]`)).toBeDisplayed()
 })
