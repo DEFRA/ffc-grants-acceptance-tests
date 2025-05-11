@@ -9,7 +9,7 @@ Feature: Example Grant Input Validation
         # are-you-in-england
         Then the user should be at URL "are-you-in-england"
         When the user continues
-        Then the user should see error "Select are you in England?"
+        Then the user should see error "Are you in England? - select yes or no"
         When the user selects "Yes"
         And continues
 

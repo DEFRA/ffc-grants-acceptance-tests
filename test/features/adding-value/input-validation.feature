@@ -26,7 +26,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "country"
         And should see heading "Is the planned project in England?"
         When the user continues
-        Then the user should see error "Select yes if the project is in England"
+        Then the user should see error "Is the planned project in England? - select yes or no"
         When the user selects "Yes"
         And continues
 
@@ -50,7 +50,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "tenancy"
         And should see heading "Is the planned project on land the business owns?"
         When the user continues
-        Then the user should see error "Select yes if the planned project is on land the business owns"
+        Then the user should see error "Is the planned project on land the business owns? - select yes or no"
         When the user selects "No"
         And continues
 
@@ -58,7 +58,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "tenancy-length"
         And should see heading "Do you have a tenancy agreement for 5 years after the final grant payment?"
         When the user continues
-        Then the user should see error "Select yes if the land has a tenancy agreement in place for 5 years after the final grant payment."
+        Then the user should see error "Do you have a tenancy agreement for 5 years after the final grant payment? - select yes or no"
         When the user selects "Yes"
         And continues
 
@@ -68,7 +68,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "smaller-abattoir"
         And should see heading "Do you want to build a new smaller abattoir?"
         When the user continues
-        Then the user should see error "Select yes if you want to build a new smaller abattoir"
+        Then the user should see error "Do you want to build a new smaller abattoir? - select yes or no"
         When the user selects "Yes"
         And continues
 
@@ -76,7 +76,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "other-farmers"
         And should see heading "Will this abattoir provide services to other farmers?"
         When the user continues
-        Then the user should see error "Select yes if this abattoir will provide services to other farmers"
+        Then the user should see error "Will this abattoir provide services to other farmers? - select yes or no"
         When the user navigates backward
 
         # explore top fruit journey
@@ -91,7 +91,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "fruit-storage"
         And should see heading "Do you want to build new controlled atmosphere storage for top fruit?"
         When the user continues
-        Then the user should see error "Select yes if you want to build new controlled atmosphere storage for top fruit"
+        Then the user should see error "Do you want to build new controlled atmosphere storage for top fruit? - select yes or no"
         When the user selects "No"
         And continues
 
@@ -131,7 +131,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "remaining-costs"
         And should see heading "Can you pay the remaining costs of £37,500?"
         When the user continues
-        Then the user should see error "Select yes if you can pay the remaining costs"
+        Then the user should see error "Can you pay the remaining costs? - select yes or no"
         When the user selects "Yes"
         And continues
 
@@ -164,7 +164,7 @@ Feature: Adding Value Input Validation
         Then the user should be at URL "mechanisation"
         And should see heading "Will this project use any mechanisation instead of manual labour?"
         When the user continues
-        Then the user should see error "Select yes if this project will use any mechanisation instead of manual labour"
+        Then the user should see error "Will this project use any mechanisation instead of manual labour? - select yes or no"
         When the user selects "Yes"
         And continues
 
@@ -245,6 +245,8 @@ Feature: Adding Value Input Validation
             | Enter a mobile number      |
             | Enter a landline number    |
             | Enter address line 1       |
+            | Enter town or city         |
+            | Enter postcode             |
         When the user enters the following
             | FIELD                     | VALUE                                          |
             | First name                | John                                           |
@@ -273,8 +275,10 @@ Feature: Adding Value Input Validation
             | Enter a mobile number      |
             | Enter a landline number    |
             | Enter address line 1       |
+            | Enter town or city         |
             | Enter postcode             |
-            # [TODO: raise defect] should be 'Enter project postcode'
+            # [Should be 'Enter project postcode' - to be fixed in TGC-666]
+            | Enter postcode             |S
         When the user enters the following
             | FIELD                     | VALUE                                              |
             | First name                | James                                              |
