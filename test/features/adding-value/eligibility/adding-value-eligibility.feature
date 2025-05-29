@@ -72,11 +72,10 @@ Feature: Adding Value Specific Eligibility and Elimination
         When the user selects "No"
         And continues
 
-        # project-items
-        Then the user should be at URL "project-items"
-        And should see heading "What eligible items does your project need?"
-        When the user selects the following
-            | None of the above |
+        # project-items-needed
+        Then the user should be at URL "project-items-needed"
+        And should see heading "Does your project need eligible items?"
+        When the user selects "No"
         And continues
 
         # cannot-apply-project-items

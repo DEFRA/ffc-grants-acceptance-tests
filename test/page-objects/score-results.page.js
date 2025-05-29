@@ -7,7 +7,7 @@ class ScoreResultsPage {
   }
 
   async score() {
-    return (await $('//h1/following-sibling::div/p').getText()).trim()
+    return (await $('//h1/following-sibling::div/h2').getText()).trim()
   }
 
   async results() {

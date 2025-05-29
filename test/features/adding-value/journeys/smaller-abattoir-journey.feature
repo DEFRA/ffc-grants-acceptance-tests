@@ -59,6 +59,12 @@ Feature: Adding Value Smaller Abattoir Journey
         When the user selects "Yes"
         And continues
 
+        # project-items-needed
+        Then the user should be at URL "project-items-needed"
+        And should see heading "Does your project need eligible items?"
+        When the user selects "Yes"
+        And continues 
+
         # project-items
         Then the user should be at URL "project-items"
         And should see heading "What eligible items does your project need?"
@@ -122,43 +128,58 @@ Feature: Adding Value Smaller Abattoir Journey
         When the user selects "More than 10%"
         And continues
 
+        # future-customers-exist
+        Then the user should be at URL "future-customers-exist"
+        And should see heading "Will you have new customers after this project?"
+        When the user selects "Yes"
+        And continues
+
         # future-customers
         Then the user should be at URL "future-customers"
-        # And should see heading "Who will your new customers be after this project?" [TODO: raise defect]
-        # When the user selects the following [TO BE IMPLEMENTED]
-        #     | Processors  |
-        #     | Wholesalers |
+        And should see heading "Who will your new customers be after this project?"
+        When the user selects the following
+            | Processors  |
+            | Wholesalers |
         And continues
 
         # collaboration
         Then the user should be at URL "collaboration"
         And should see heading "Will you work in partnership or collaborate with other farmers or producers?"
-        #  the user selects "Yes" [TO BE IMPLEMENTED]
+        When the user selects "Yes"
+        And continues
+
+        # environmental-impact-exist
+        Then the user should be at URL "environmental-impact-exist"
+        And should see heading "Will this project improve the environment?"
+        When the user selects "Yes"
         And continues
 
         # environmental-impact
         Then the user should be at URL "environmental-impact"
         And should see heading "How will this project improve the environment?"
-        # When the user selects the following [TO BE IMPLEMENTED]
-        #     | Renewable energy  |
-        #     | Energy efficiency |
+        When the user selects the following
+            | Renewable energy  |
+            | Energy efficiency |
         And continues
 
         # score-results
         Then the user should be at URL "score-results"
-        # And should see "Strong" for their project score [Scoring to be fixed in TGC-617]
-        # And should see the following scoring answers
-        #     | TOPIC                | ANSWERS                                   | SCORE   |
-        #     | Produce processed    | Wild venison meat produce                 | Strong  |
-        #     | Adding value         | Introducing a new product to your farm    | Strong  |
-        #     | Project impact       | Increasing range of added-value products  | Average |
-        #     |                      | Increasing volume of added-value products |         |
-        #     | Mechanisation        | Yes, more than 10%                        | Strong  |
-        #     | New customers        | Processors                                | Weak    |
-        #     |                      | Wholesalers                               |         |
-        #     | Collaboration        | Yes                                       | Strong  |
-        #     | Environmental impact | Renewable energy                          | Strong  |
-        #     |                      | Energy efficiency                         |         |
+        And should see "Strong" for their project score
+        And should see the following score results
+            | TOPIC                | ANSWERS                                   | SCORE   | FUNDING PRIORITIES                                                                            |
+            | Produce processed    | Wild venison meat produce                 | Strong  | Create and expand processing capacity to provide more English-grown food for consumers to buy |
+            | Adding value         | Introducing a new product to your farm    | Strong  | Improve processing and supply chains                                                          |
+            |                      |                                           |         | Grow your business                                                                            |
+            | Project impact       | Increasing range of added-value products  | Medium  | Improve processing and supply chains                                                          |
+            |                      | Increasing volume of added-value products |         | Grow your business                                                                            |
+            | Mechanisation        | More than 10%                             | Strong  | Improve processing and supply chains                                                          |
+            |                      |                                           |         | Grow your business                                                                            |
+            | New customers        | Processors                                | Weak    | Improve processing and supply chains                                                          |
+            |                      | Wholesalers                               |         | Grow your business                                                                            |
+            | Collaboration        | Yes                                       | Strong  | Improve processing and supply chains                                                          |
+            |                      |                                           |         | Encourage collaboration and partnerships                                                      |
+            | Environmental impact | Renewable energy                          | Strong  | Improve processing and supply chains                                                          |
+            |                      | Energy efficiency                         |         | Encourage collaboration and partnerships                                                      |
         When the user continues
 
         # business-details

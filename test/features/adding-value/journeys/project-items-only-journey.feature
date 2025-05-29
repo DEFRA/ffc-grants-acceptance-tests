@@ -60,6 +60,12 @@ Feature: Adding Value Project Items-Only Journey
         When the user selects "No"
         And continues
 
+        # project-items-needed
+        Then the user should be at URL "project-items-needed"
+        And should see heading "Does your project need eligible items?"
+        When the user selects "Yes"
+        And continues
+
         # project-items
         Then the user should be at URL "project-items"
         And should see heading "What eligible items does your project need?"
@@ -113,7 +119,7 @@ Feature: Adding Value Project Items-Only Journey
         When the user selects the following
             | Increasing range of added-value products  |
             | Increasing volume of added-value products |
-        #    | Allow selling direct to consumer          | [TODO: raise defect]
+            | Allow selling direct to consumer          |
         And continues
 
         # mechanisation
@@ -122,50 +128,62 @@ Feature: Adding Value Project Items-Only Journey
         When the user selects "No"
         And continues
 
+        # future-customers-exist
+        Then the user should be at URL "future-customers-exist"
+        And should see heading "Will you have new customers after this project?"
+        When the user selects "Yes"
+        And continues
+
         # future-customers
         Then the user should be at URL "future-customers"
-        # And should see heading "Who will your new customers be after this project?" [TODO: raise defect]
-        # When the user selects the following [TO BE IMPLEMENTED]
-        #     | Processors                  |
-        #     | Wholesalers                 |
-        #     | Retailers                   |
-        #     | Selling direct to consumers |
+        And should see heading "Who will your new customers be after this project?"
+        When the user selects the following
+            | Processors                  |
+            | Wholesalers                 |
+            | Retailers                   |
         And continues
 
         # collaboration
         Then the user should be at URL "collaboration"
         And should see heading "Will you work in partnership or collaborate with other farmers or producers?"
-        # When the user selects "No" [TO BE IMPLEMENTED]
+        When the user selects "No"
+        And continues
+
+        # environmental-impact-exist
+        Then the user should be at URL "environmental-impact-exist"
+        And should see heading "Will this project improve the environment?"
+        When the user selects "Yes"
         And continues
 
         # environmental-impact
         Then the user should be at URL "environmental-impact"
         And should see heading "How will this project improve the environment?"
-        # When the user selects the following [TO BE IMPLEMENTED]
-        #     | Renewable energy  |
-        #     | Energy efficiency |
-        #     | Water efficiency  |
+        When the user selects the following
+            | Renewable energy  |
+            | Energy efficiency |
+            | Water efficiency  |
         And continues
 
-        # score
+        # score-results
         Then the user should be at URL "score-results"
-        # And should see "Average" for their project score [Scoring to be fixed in TGC-617]
-        # And should see the following scoring answers
-        #     | TOPIC                | ANSWERS                                   | SCORE   |
-        #     | Produce processed    | Fibre produce                             | Weak    |
-        #     | Adding value         | Packing produce                           | Weak    |
-        #     | Project impact       | Increasing range of added-value products  | Average |
-        #     |                      | Increasing volume of added-value products |         |
-        #     |                      | Allow selling direct to consumer          |         |
-        #     | Mechanisation        | No                                        | Weak    |
-        #     | New customers        | Processors                                | Strong  |
-        #     |                      | Wholesalers                               |         |
-        #     |                      | Retailers                                 |         |
-        #     |                      | Selling direct to consumers               |         |
-        #     | Collaboration        | No                                        | Weak    |
-        #     | Environmental impact | Renewable energy                          | Strong  |
-        #     |                      | Energy efficiency                         |         |
-        #     |                      | Water efficiency                          |         |
+        And should see "Weak" for their project score
+        And should see the following score results
+            | TOPIC                | ANSWERS                                   | SCORE   | FUNDING PRIORITIES                                                                            |
+            | Produce processed    | Fibre produce                             | Weak    | Create and expand processing capacity to provide more English-grown food for consumers to buy |
+            | Adding value         | Packing produce                           | Weak    | Improve processing and supply chains                                                          |
+            |                      |                                           |         | Grow your business                                                                            |
+            | Project impact       | Increasing range of added-value products  | Strong  | Improve processing and supply chains                                                          |
+            |                      | Increasing volume of added-value products |         | Grow your business                                                                            |
+            |                      | Allow selling direct to consumer          |         |                                                                                               |
+            #| Mechanisation        | No                                        | Weak    | [Now missing..]
+            | New customers        | Processors                                | Strong  | Improve processing and supply chains                                                          |
+            |                      | Wholesalers                               |         | Grow your business                                                                            |
+            |                      | Retailers                                 |         |                                                                                               |
+            | Collaboration        | No                                        | Weak    | Improve processing and supply chains                                                          |
+            |                      |                                           |         | Encourage collaboration and partnerships                                                      |
+            | Environmental impact | Renewable energy                          | Strong  | Improve processing and supply chains                                                          |
+            |                      | Energy efficiency                         |         | Encourage collaboration and partnerships                                                      |
+            |                      | Water efficiency                          |         |                                                                                               |
         When the user continues
 
         # business-details

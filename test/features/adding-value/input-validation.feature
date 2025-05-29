@@ -97,6 +97,14 @@ Feature: Adding Value Input Validation
 
         # explore project items-only journey
 
+        # project-items-needed
+        Then the user should be at URL "project-items-needed"
+        And should see heading "Does your project need eligible items?"
+        When the user continues
+        Then the user should see error "Does your project need eligible items? - select yes or no"
+        When the user selects "Yes"
+        And continues
+
         # project-items
         Then the user should be at URL "project-items"
         And should see heading "What eligible items does your project need?"
@@ -176,31 +184,47 @@ Feature: Adding Value Input Validation
         When the user selects "More than 10%"
         And continues
 
+        # future-customers-exist
+        Then the user should be at URL "future-customers-exist"
+        And should see heading "Will you have new customers after this project?"
+        When the user continues
+        Then the user should see error "Will you have new customers after this project? - select yes or no"
+        When the user selects "Yes"
+        And continues
+
         # future-customers
         Then the user should be at URL "future-customers"
-        # And should see heading "Who will your new customers be after this project?" [TODO: raise defect]
+        And should see heading "Who will your new customers be after this project?"
         When the user continues
-        # Then the user should see error "Select who your new customers will be after this project" [TO BE IMPLEMENTED]
-        # When the user selects the following
-        #     | Processors |
-        # And continues
+        Then the user should see error "Select who will your new customers be after this project?"
+        When the user selects the following
+            | Processors |
+        And continues
 
         # collaboration
         Then the user should be at URL "collaboration"
         And should see heading "Will you work in partnership or collaborate with other farmers or producers?"
         When the user continues
-        # Then the user should see error "Select yes if you will work in partnership or collaborate with other farmers or producers" [TO BE IMPLEMENTED]
-        # When the user selects "Yes"
-        # And continues
+        Then the user should see error "Will you work in partnership or collaborate with other farmers or producers? - select yes or no"
+        When the user selects "Yes"
+        And continues
+
+        # environmental-impact-exist
+        Then the user should be at URL "environmental-impact-exist"
+        And should see heading "Will this project improve the environment?"
+        When the user continues
+        Then the user should see error "Will this project improve the environment? - select yes or no"
+        When the user selects "Yes"
+        And continues
 
         # environmental-impact
         Then the user should be at URL "environmental-impact"
         And should see heading "How will this project improve the environment?"
         When the user continues
-        # Then the user should see error "Select how this project will improve the environment" [TO BE IMPLEMENTED]
-        # When the user selects the following
-        #     | Renewable energy |
-        # And continues
+        Then the user should see error "Select how will this project improve the environment?"
+        When the user selects the following
+            | Renewable energy |
+        And continues
 
         # score-results
         Then the user should be at URL "score-results"

@@ -4,6 +4,8 @@ Feature: Adding Value Top Fruit Journey
         - while awaiting planning permission
         - as a tenant farmer with a short tenancy
         - with potential grant funding below the maximum
+        - without adding new customers
+        - without improving the environment
         - receiving an average score
         - as an agent
 
@@ -100,35 +102,31 @@ Feature: Adding Value Top Fruit Journey
         When the user selects "No"
         And continues
 
-        # future-customers
-        Then the user should be at URL "future-customers"
-        # And should see heading "Who will your new customers be after this project?" [TODO: raise defect]
-        # When the user selects the following [TO BE IMPLEMENTED]
-        #     | No change |
+        # future-customers-exist
+        Then the user should be at URL "future-customers-exist"
+        And should see heading "Will you have new customers after this project?"
+        When the user selects "No"
         And continues
 
         # collaboration
         Then the user should be at URL "collaboration"
         And should see heading "Will you work in partnership or collaborate with other farmers or producers?"
-        # When the user selects "No" [TO BE IMPLEMENTED]
+        When the user selects "No"
         And continues
 
-        # environmental-impact
-        Then the user should be at URL "environmental-impact"
-        And should see heading "How will this project improve the environment?"
-        # When the user selects the following [TO BE IMPLEMENTED]
-        #     | My project will not improve the environment |
+        # environmental-impact-exist
+        Then the user should be at URL "environmental-impact-exist"
+        And should see heading "Will this project improve the environment?"
+        When the user selects "No"
         And continues
 
         # score-results
         Then the user should be at URL "score-results"
-        # And should see "Average" for their project score [Scoring to be fixed in TGC-617]
-        # And should see the following scoring answers
-        #     | TOPIC                | ANSWERS                                     | SCORE |
-        #     | Mechanisation        | No                                          | Weak  |
-        #     | New customers        | No change                                   | Weak  |
-        #     | Collaboration        | No                                          | Weak  |
-        #     | Environmental impact | My project will not improve the environment | Weak  |
+        And should see "Weak" for their project score
+        And should see the following score results
+            | TOPIC                | ANSWERS                                   | SCORE   | FUNDING PRIORITIES                       |
+            | Collaboration        | No                                        | Weak    | Improve processing and supply chains     |
+            |                      |                                           |         | Encourage collaboration and partnerships |
         When the user continues
 
         # business-details
