@@ -122,7 +122,7 @@ Feature: Adding Value Top Fruit Journey
 
         # score-results
         Then the user should be at URL "score-results"
-        And should see "Weak" for their project score
+        And should see "Average" for their project score
         And should see the following score results
             | TOPIC                | ANSWERS                                   | SCORE   | FUNDING PRIORITIES                       |
             | Collaboration        | No                                        | Weak    | Improve processing and supply chains     |

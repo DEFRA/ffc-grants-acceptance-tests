@@ -170,7 +170,7 @@ Feature: Adding Value Smaller Abattoir Journey
             | Produce processed    | Wild venison meat produce                 | Strong  | Create and expand processing capacity to provide more English-grown food for consumers to buy |
             | Adding value         | Introducing a new product to your farm    | Strong  | Improve processing and supply chains                                                          |
             |                      |                                           |         | Grow your business                                                                            |
-            | Project impact       | Increasing range of added-value products  | Medium  | Improve processing and supply chains                                                          |
+            | Project impact       | Increasing range of added-value products  | Average | Improve processing and supply chains                                                          |
             |                      | Increasing volume of added-value products |         | Grow your business                                                                            |
             | Mechanisation        | More than 10%                             | Strong  | Improve processing and supply chains                                                          |
             |                      |                                           |         | Grow your business                                                                            |

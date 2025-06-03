@@ -166,7 +166,7 @@ Feature: Adding Value Project Items-Only Journey
 
         # score-results
         Then the user should be at URL "score-results"
-        And should see "Weak" for their project score
+        And should see "Average" for their project score
         And should see the following score results
             | TOPIC                | ANSWERS                                   | SCORE   | FUNDING PRIORITIES                                                                            |
             | Produce processed    | Fibre produce                             | Weak    | Create and expand processing capacity to provide more English-grown food for consumers to buy |
@@ -175,7 +175,7 @@ Feature: Adding Value Project Items-Only Journey
             | Project impact       | Increasing range of added-value products  | Strong  | Improve processing and supply chains                                                          |
             |                      | Increasing volume of added-value products |         | Grow your business                                                                            |
             |                      | Allow selling direct to consumer          |         |                                                                                               |
-            #| Mechanisation        | No                                        | Weak    | [Now missing..]
+            | Mechanisation        | No                                        | Weak    |                                                                                               | 
             | New customers        | Processors                                | Strong  | Improve processing and supply chains                                                          |
             |                      | Wholesalers                               |         | Grow your business                                                                            |
             |                      | Retailers                                 |         |                                                                                               |
