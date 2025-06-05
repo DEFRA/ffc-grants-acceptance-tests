@@ -1,7 +1,5 @@
 import allure from 'allure-commandline'
 import { browser } from '@wdio/globals'
-import fs from 'fs'
-import path from 'path'
 
 export const config = {
   baseUrl: `https://grants-ui.test.cdp-int.defra.cloud`,
@@ -67,10 +65,6 @@ export const config = {
 
         if (exitCode !== 0) {
           return reject(new Error(`Could not generate Allure report, exited with code: ${exitCode}`))
-        }
-
-        if (fs.existsSync(path.join('./accessibility-reports'))) {
-          fs.cpSync(path.join('./accessibility-reports'), path.join('./allure-report/accessibility'), { recursive: true })
         }
 
         resolve()
