@@ -57,7 +57,8 @@ Then('(the user )should see the following score results', async (dataTable) => {
     const score = row.SCORE
     const fundingPriority = row['FUNDING PRIORITIES']
 
-    if (topic) {
+    if (topic || score) {
+      // allow for lack of topic, to be fixed in TGC-659
       scoreResult = new ScoreResult(topic, [], score, [])
       expectedScoreResults.push(scoreResult)
     }

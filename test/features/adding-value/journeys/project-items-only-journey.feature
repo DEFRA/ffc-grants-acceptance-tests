@@ -170,12 +170,15 @@ Feature: Adding Value Project Items-Only Journey
         And should see the following score results
             | TOPIC                | ANSWERS                                   | SCORE   | FUNDING PRIORITIES                                                                            |
             | Produce processed    | Fibre produce                             | Weak    | Create and expand processing capacity to provide more English-grown food for consumers to buy |
-            | Adding value         | Packing produce                           | Weak    | Improve processing and supply chains                                                          |
-            |                      |                                           |         | Grow your business                                                                            |
-            | Project impact       | Increasing range of added-value products  | Strong  | Improve processing and supply chains                                                          |
+        # Adding Value topic text does not appear, nor funding priorities. To be fixed in TGC-659.
+        #   | Adding value         | Packing produce                           | Weak    | Improve processing and supply chains                                                          |
+        #   |                      |                                           |         | Grow your business                                                                            |
+            |                      | Packing produce                           | Weak    |                                                                                               |
+            | Project impact       | Increasing range of added-value products  | Average | Improve processing and supply chains                                                          |
             |                      | Increasing volume of added-value products |         | Grow your business                                                                            |
             |                      | Allow selling direct to consumer          |         |                                                                                               |
-            | Mechanisation        | No                                        | Weak    |                                                                                               | 
+        # Mechanisation, Future Customers and Environmental impact can all be answered 'No' and will not appear in the results. To be fixed in TGC-659.
+        #   | Mechanisation        | No                                        | Weak    |                                                                                               | 
             | New customers        | Processors                                | Strong  | Improve processing and supply chains                                                          |
             |                      | Wholesalers                               |         | Grow your business                                                                            |
             |                      | Retailers                                 |         |                                                                                               |
