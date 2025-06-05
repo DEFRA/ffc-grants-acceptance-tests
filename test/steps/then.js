@@ -1,9 +1,10 @@
 import { Then } from '@wdio/cucumber-framework'
-import { pollForSuccess } from './polling'
+import { pollForSuccess } from '../services/polling'
 import ScoreResult from '../dto/score-result'
 import ScoreResultsPage from '../page-objects/score-results.page'
 import SummaryAnswer from '../dto/summary-answer'
 import SummaryPage from '../page-objects/summary.page'
+import { analyseAccessibility, generateAccessibilityReports } from '../services/accessibility-checking.js'
 
 Then('(the user )should see heading {string}', async (text) => {
   if (text.indexOf("'") > -1) {
@@ -90,4 +91,16 @@ Then('(the user )should see hint {string}', async (text) => {
 
 Then('(the user )should see warning {string}', async (text) => {
   await expect($(`//div[@class='govuk-warning-text']//strong[text()[contains(.,'${text}')]]`)).toBeDisplayed()
+})
+
+Then('the page should be analysed for accessibility', async () => {
+  await analyseAccessibility()
+})
+
+Then('the page should be analysed for accessibility for {string}', async (suffix) => {
+  await analyseAccessibility(suffix)
+})
+
+Then('accessibility reports are generated', async () => {
+  generateAccessibilityReports()
 })

@@ -1,5 +1,7 @@
 import allure from 'allure-commandline'
 import { browser } from '@wdio/globals'
+import fs from 'fs'
+import path from 'path'
 
 export const config = {
   baseUrl: `https://grants-ui.test.cdp-int.defra.cloud`,
@@ -55,20 +57,22 @@ export const config = {
     }
   },
   onComplete: function (exitCode, config, capabilities, results) {
-    const reportError = new Error('Could not generate Allure report')
     const generation = allure(['generate', 'allure-results', '--clean'])
 
     return new Promise((resolve, reject) => {
-      const generationTimeout = setTimeout(() => reject(reportError), 6000)
+      const generationTimeout = setTimeout(() => reject(new Error('Could not generate Allure report, timeout exceeded')), 30000)
 
       generation.on('exit', function (exitCode) {
         clearTimeout(generationTimeout)
 
         if (exitCode !== 0) {
-          return reject(reportError)
+          return reject(new Error(`Could not generate Allure report, exited with code: ${exitCode}`))
         }
 
-        allure(['open'])
+        if (fs.existsSync(path.join('./accessibility-reports'))) {
+          fs.cpSync(path.join('./accessibility-reports'), path.join('./allure-report/accessibility'), { recursive: true })
+        }
+
         resolve()
       })
     })
