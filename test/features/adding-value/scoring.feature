@@ -1,4 +1,4 @@
-Feature: Scoring
+Feature: Adding Value Scoring
 
     Scenario: Generate a Weak score, improve it to an Average score using 'Change' links and then improve it to a Strong score
         # start
