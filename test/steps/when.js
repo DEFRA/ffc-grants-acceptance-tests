@@ -1,5 +1,6 @@
 import { When } from '@wdio/cucumber-framework'
 import ScoreResultsPage from '../page-objects/score-results.page'
+import TaskListPage from '../page-objects/task-list.page'
 
 When('(the user )clicks on {string}', async (text) => {
   await $(`//*[contains(text(),'${text}')]`).click()
@@ -23,6 +24,10 @@ When('(the user )selects the following', async (dataTable) => {
 
 When('(the user )continues', async () => {
   await $(`aria/Continue`).click()
+})
+
+When('(the user )confirms and continues', async () => {
+  await $(`aria/Confirm and Continue`).click()
 })
 
 When('(the user )submits their form', async () => {
@@ -55,4 +60,8 @@ When('the user enters the following', async (dataTable) => {
 
 When('(the user )confirms and sends', async () => {
   await $(`//button[contains(text(),'Confirm and send')]`).click()
+})
+
+When('(the user )selects task {string}', async (taskName) => {
+  await TaskListPage.selectTask(taskName)
 })

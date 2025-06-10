@@ -4,12 +4,31 @@ import ScoreResult from '../dto/score-result'
 import ScoreResultsPage from '../page-objects/score-results.page'
 import SummaryAnswer from '../dto/summary-answer'
 import SummaryPage from '../page-objects/summary.page'
+import Task from '../dto/task'
+import TaskListGroup from '../dto/task-list-group'
+import TaskListPage from '../page-objects/task-list.page'
+import TaskSummaryAnswer from '../dto/task-summary-answer'
+import TaskSummaryPage from '../page-objects/task-summary.page'
 
 Then('(the user )should see heading {string}', async (text) => {
   if (text.indexOf("'") > -1) {
     text = text.substring(0, text.indexOf("'"))
   }
   await expect($(`//h1[contains(text(),'${text}')]`)).toBeDisplayed()
+})
+
+Then('(the user )should see banner {string}', async (text) => {
+  if (text.indexOf("'") > -1) {
+    text = text.substring(0, text.indexOf("'"))
+  }
+  await expect($(`//span[@class='govuk-service-navigation__service-name']/a`)).toHaveText(text)
+})
+
+Then('(the user )should see section title {string}', async (text) => {
+  if (text.indexOf("'") > -1) {
+    text = text.substring(0, text.indexOf("'"))
+  }
+  await expect($(`//h2[@id='section-title']`)).toHaveText(text)
 })
 
 Then('(the user )should be at URL {string}', async (expectedPath) => {
@@ -91,4 +110,35 @@ Then('(the user )should see hint {string}', async (text) => {
 
 Then('(the user )should see warning {string}', async (text) => {
   await expect($(`//div[@class='govuk-warning-text']//strong[text()[contains(.,'${text}')]]`)).toBeDisplayed()
+})
+
+Then('(the user )should see the following task list', async (dataTable) => {
+  const expectedGroups = []
+  let group = null
+
+  for (const row of dataTable.raw()) {
+    if (!row[0]) {
+      continue
+    }
+
+    if (!row[1]) {
+      group = new TaskListGroup(row[0], [])
+      expectedGroups.push(group)
+    } else {
+      group.tasks.push(new Task(row[0], row[1]))
+    }
+  }
+
+  const actualGroups = await TaskListPage.groups()
+  await expect(actualGroups).toEqual(expectedGroups)
+})
+
+Then('(the user )should see the following {string} task summary', async (taskName, dataTable) => {
+  const expectedAnswers = await Promise.all(
+    dataTable.raw().map(async (row) => {
+      return new TaskSummaryAnswer(row[0], row[1])
+    })
+  )
+  await expect(taskName).toEqual(await TaskSummaryPage.groupName())
+  await expect(expectedAnswers).toEqual(await TaskSummaryPage.answers())
 })
