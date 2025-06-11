@@ -1,3 +1,4 @@
+@wip
 Feature: Task Lists
 
     Background:
@@ -33,7 +34,6 @@ Feature: Task Lists
             | Check your details        | Cannot start yet |
             | Confirm and send          | Cannot start yet |
 
-    @wip
     Scenario: Complete a task
         When the user selects task "Business status"
 
