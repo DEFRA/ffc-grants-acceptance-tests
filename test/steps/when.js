@@ -27,7 +27,7 @@ When('(the user )continues', async () => {
 })
 
 When('(the user )confirms and continues', async () => {
-  await $(`aria/Confirm and Continue`).click()
+  await $(`aria/Confirm and continue`).click()
 })
 
 When('(the user )submits their form', async () => {

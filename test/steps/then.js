@@ -133,12 +133,11 @@ Then('(the user )should see the following task list', async (dataTable) => {
   await expect(actualGroups).toEqual(expectedGroups)
 })
 
-Then('(the user )should see the following {string} task summary', async (taskName, dataTable) => {
+Then('(the user )should see the following task summary', async (dataTable) => {
   const expectedAnswers = await Promise.all(
     dataTable.raw().map(async (row) => {
       return new TaskSummaryAnswer(row[0], row[1])
     })
   )
-  await expect(taskName).toEqual(await TaskSummaryPage.groupName())
   await expect(expectedAnswers).toEqual(await TaskSummaryPage.answers())
 })

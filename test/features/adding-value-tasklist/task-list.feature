@@ -1,10 +1,9 @@
-@wip
 Feature: Task Lists
 
     Background:
         # tasklist
-        Given the user navigates to "/adding-value-tasklist"
-        Then the user should be at URL "adding-value-tasklist"
+        Given the user navigates to "adding-value-tasklist/tasklist"
+        Then the user should be at URL "tasklist"
         Then the user should see heading "Adding Value grant"
         And should see the following task list
             | 1. Check before you start |                  |
@@ -60,7 +59,8 @@ Feature: Task Lists
         # summary
         Then the user should be at URL "summary"
         And should see banner "Business status"
-        And should see the following "Business status" task summary
+        Then the user should see heading "Business status"
+        And should see the following task summary
             | What is your business?                    | A grower or producer of agricultural or horticultural produce |
             | What is the legal status of the business? | Sole trader                                                   |
             | Is the planned project in England?        | Yes                                                           |
@@ -107,13 +107,14 @@ Feature: Task Lists
         # summary
         Then the user should be at URL "summary"
         And should see banner "Who is applying"
-        And should see the following "Who is applying" task summary
+        Then the user should see heading "Who is applying"
+        And should see the following task summary
             | Who is applying for this grant? | Applicant |
         When the user confirms and continues
 
-        # task list
-        Given the user navigates to "/adding-value-tasklist"
-        Then the user should be at URL "adding-value-tasklist"
+        # tasklist
+        Given the user navigates to "/adding-value-tasklist/tasklist"
+        Then the user should be at URL "tasklist"
         Then the user should see heading "Adding Value grant"
         And should see the following task list
             | 1. Check before you start |                  |
@@ -139,7 +140,6 @@ Feature: Task Lists
             | Applicant                 | Not yet started  |
             | Check your details        | Cannot start yet |
             | Confirm and send          | Cannot start yet |
-
 
     Scenario: Resume a task
         When the user selects task "Business status"
@@ -207,7 +207,6 @@ Feature: Task Lists
 
         # country
         Then the user should be at URL "country"
-        And should see banner "Business status"
         And should see section title "Business status"
         And should see heading "Is the planned project in England?"
         When the user selects "Yes"
@@ -215,8 +214,8 @@ Feature: Task Lists
 
         # summary
         Then the user should be at URL "summary"
-        And should see banner "Business status"
-        And should see the following "Business status" task summary
+        And should see heading "Business status"
+        And should see the following task summary
             | What is your business?                    | A grower or producer of agricultural or horticultural produce |
             | What is the legal status of the business? | Sole trader                                                   |
             | Is the planned project in England?        | Yes                                                           |
