@@ -17,6 +17,9 @@ export const config = {
   specs: ['./test/features/**/*.feature'],
   exclude: [],
   logLevel: 'info',
+  logLevels: {
+    webdriver: 'error'
+  },
   bail: 1,
   waitforTimeout: 10000,
   waitforInterval: 200,
